@@ -3,36 +3,45 @@
  * and open the template in the editor.
  */
 package bestdeal.esprit.dao;
-import bestdeal.esprit.entities.Detail_reservation;
+import bestdeal.esprit.entities.BonAchat;
+import bestdeal.esprit.util.Connexion;
+import java.sql.Connection;
 import java.util.List;
+
 /**
  *
  * @author Fahmi
  */
-public class Detail_reservationDAO implements DAO<Detail_reservation>{
+public class BonAchatDAO implements DAO<BonAchat>
+{
+    Connection con;
+
+    public BonAchatDAO() {
+        con= Connexion.getInstance();
+    }
 
     @Override
-    public void create(Detail_reservation a) {
+    public void create(BonAchat a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void update(Detail_reservation a) {
+    public void update(BonAchat a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public List<Detail_reservation> findAll() {
+    public List<BonAchat> findAll() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Detail_reservation findById(int id) {
+    public BonAchat findById(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public boolean delete(Detail_reservation a) {
+    public boolean delete(BonAchat a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

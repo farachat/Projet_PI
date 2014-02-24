@@ -4,6 +4,8 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.Evaluation;
+import bestdeal.esprit.util.Connexion;
+import java.sql.Connection;
 import java.util.List;
 /**
  *
@@ -11,6 +13,13 @@ import java.util.List;
  */
 public class EvaluationDAO implements DAO<Evaluation>{
 
+    
+    Connection con;
+
+    public EvaluationDAO() {
+        con= Connexion.getInstance();
+    }
+    
     @Override
     public void create(Evaluation a) {
         throw new UnsupportedOperationException("Not supported yet.");

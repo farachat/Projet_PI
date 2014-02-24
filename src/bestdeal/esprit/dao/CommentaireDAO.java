@@ -4,6 +4,8 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.Commentaire;
+import bestdeal.esprit.util.Connexion;
+import java.sql.Connection;
 import java.util.List;
 /**
  *
@@ -11,6 +13,11 @@ import java.util.List;
  */
 public class CommentaireDAO implements DAO<Commentaire>
 {
+    Connection con;
+
+    public CommentaireDAO() {
+        con= Connexion.getInstance();
+    }
 
     @Override
     public void create(Commentaire a) {
