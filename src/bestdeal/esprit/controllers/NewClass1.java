@@ -8,6 +8,6 @@ package bestdeal.esprit.controllers;
  *
  * @author Fahmi
  */
-public class NewClass {
+public class NewClass1 {
     
 }
