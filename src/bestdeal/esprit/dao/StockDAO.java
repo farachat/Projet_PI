@@ -4,6 +4,8 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.Stock;
+import bestdeal.esprit.util.Connexion;
+import java.sql.Connection;
 import java.util.List;
 /**
  *
@@ -11,6 +13,11 @@ import java.util.List;
  */
 public class StockDAO implements DAO<Stock>{
 
+    Connection con;
+
+    public StockDAO() {
+        con= Connexion.getInstance();
+    }
     @Override
     public void create(Stock a) {
         throw new UnsupportedOperationException("Not supported yet.");
