@@ -159,6 +159,10 @@ public class Membre {
     public String toString() {
         return "Membre{" + "idMembre=" + idMembre + ", cinMembre=" + cinMembre + ", loginMembre=" + loginMembre + ", pwdMembre=" + pwdMembre + ", nomMembre=" + nomMembre + ", prenomMembre=" + prenomMembre + ", dateNaissMembre=" + dateNaissMembre + ", mailMembre=" + mailMembre + ", telMembre=" + telMembre + ", adressMembre=" + adressMembre + ", type=" + type + '}';
     }
+
+    
+
+   
     
     
     
