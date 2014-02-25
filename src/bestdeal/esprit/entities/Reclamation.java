@@ -5,6 +5,7 @@
 package bestdeal.esprit.entities;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -12,20 +13,20 @@ import java.util.Date;
  */
 public class Reclamation {
     private int idReclamation;
-    private int idMembre;
-    private int idAdmin;
+    private Membre idMembre;
+    private Administrateur idAdmin;
     private String libelle;
     private Date dateSys;
 
-    public Reclamation(int idReclamation, int idMembre, int idAdmin, String libelle, Date dateSys) {
+    public Reclamation() {
+    }
+
+    public Reclamation(int idReclamation, Membre idMembre, Administrateur idAdmin, String libelle, Date dateSys) {
         this.idReclamation = idReclamation;
         this.idMembre = idMembre;
         this.idAdmin = idAdmin;
         this.libelle = libelle;
         this.dateSys = dateSys;
-    }
-
-    public Reclamation() {
     }
 
     public int getIdReclamation() {
@@ -36,19 +37,19 @@ public class Reclamation {
         this.idReclamation = idReclamation;
     }
 
-    public int getIdMembre() {
+    public Membre getIdMembre() {
         return idMembre;
     }
 
-    public void setIdMembre(int idMembre) {
+    public void setIdMembre(Membre idMembre) {
         this.idMembre = idMembre;
     }
 
-    public int getIdAdmin() {
+    public Administrateur getIdAdmin() {
         return idAdmin;
     }
 
-    public void setIdAdmin(int idAdmin) {
+    public void setIdAdmin(Administrateur idAdmin) {
         this.idAdmin = idAdmin;
     }
 
@@ -69,9 +70,34 @@ public class Reclamation {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + this.idReclamation;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Reclamation other = (Reclamation) obj;
+        if (this.idReclamation != other.idReclamation) {
+            return false;
+        }
+        return true;
+    }
+
+  
+
+    @Override
     public String toString() {
         return "Reclamation{" + "idReclamation=" + idReclamation + ", idMembre=" + idMembre + ", idAdmin=" + idAdmin + ", libelle=" + libelle + ", dateSys=" + dateSys + '}';
     }
+
     
     
     

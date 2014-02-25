@@ -11,11 +11,11 @@ package bestdeal.esprit.entities;
 public class Stock {
     
   private int idStock;
-  private int idDeal;
+  private Deal idDeal;
   private int qteStockDisponible;
   private int qteStockInitial;
 
-    public Stock(int idStock, int idDeal, int qteStockDisponible, int qteStockInitial) {
+    public Stock(int idStock, Deal idDeal, int qteStockDisponible, int qteStockInitial) {
         this.idStock = idStock;
         this.idDeal = idDeal;
         this.qteStockDisponible = qteStockDisponible;
@@ -33,11 +33,11 @@ public class Stock {
         this.idStock = idStock;
     }
 
-    public int getIdDeal() {
+    public Deal getIdDeal() {
         return idDeal;
     }
 
-    public void setIdDeal(int idDeal) {
+    public void setIdDeal(Deal idDeal) {
         this.idDeal = idDeal;
     }
 
@@ -59,8 +59,8 @@ public class Stock {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + this.idDeal;
+        int hash = 3;
+        hash = 89 * hash + this.idStock;
         return hash;
     }
 
@@ -73,11 +73,13 @@ public class Stock {
             return false;
         }
         final Stock other = (Stock) obj;
-        if (this.idDeal != other.idDeal) {
+        if (this.idStock != other.idStock) {
             return false;
         }
         return true;
     }
+
+    
 
     @Override
     public String toString() {

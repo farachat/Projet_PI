@@ -13,14 +13,14 @@ import java.util.Date;
 public class Reservation {
     
     private int idReservation;
-    private int idMembre;
+    private Membre idMembre;
     private String categorie;
     private Date dateReservation;
 
     public Reservation() {
     }
 
-    public Reservation(int idReservation, int idMembre, String categorie, Date dateReservation) {
+    public Reservation(int idReservation, Membre idMembre, String categorie, Date dateReservation) {
         this.idReservation = idReservation;
         this.idMembre = idMembre;
         this.categorie = categorie;
@@ -35,11 +35,11 @@ public class Reservation {
         this.idReservation = idReservation;
     }
 
-    public int getIdMembre() {
+    public Membre getIdMembre() {
         return idMembre;
     }
 
-    public void setIdMembre(int idMembre) {
+    public void setIdMembre(Membre idMembre) {
         this.idMembre = idMembre;
     }
 
@@ -60,15 +60,9 @@ public class Reservation {
     }
 
     @Override
-    public String toString() {
-        return "Reservation{" + "idReservation=" + idReservation + ", idMembre=" + idMembre + ", categorie=" + categorie + ", dateReservation=" + dateReservation + '}';
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.idReservation;
-        hash = 29 * hash + this.idMembre;
+        int hash = 3;
+        hash = 67 * hash + this.idReservation;
         return hash;
     }
 
@@ -84,11 +78,14 @@ public class Reservation {
         if (this.idReservation != other.idReservation) {
             return false;
         }
-        if (this.idMembre != other.idMembre) {
-            return false;
-        }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Reservation{" + "idReservation=" + idReservation + ", idMembre=" + idMembre + ", categorie=" + categorie + ", dateReservation=" + dateReservation + '}';
+    }
+
     
     
     

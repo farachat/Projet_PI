@@ -4,19 +4,22 @@
  */
 package bestdeal.esprit.entities;
 
+import java.util.Objects;
+
+
 /**
  *
  * @author Fahmi
  */
 public class DetailBonAchat {
     
-    private int idBonAchat;
-    private int idAchat;
-    private int idDeal;
+    private DetailBonAchat idBonAchat;
+    private BonAchat idAchat;
+    private Deal idDeal;
     private int quantite;
     private float prix;
 
-    public DetailBonAchat(int idBonAchat, int idAchat, int idDeal, int quantite, float prix) {
+    public DetailBonAchat(DetailBonAchat idBonAchat, BonAchat idAchat, Deal idDeal, int quantite, float prix) {
         this.idBonAchat = idBonAchat;
         this.idAchat = idAchat;
         this.idDeal = idDeal;
@@ -27,27 +30,27 @@ public class DetailBonAchat {
     public DetailBonAchat() {
     }
 
-    public int getIdBonAchat() {
+    public DetailBonAchat getIdBonAchat() {
         return idBonAchat;
     }
 
-    public void setIdBonAchat(int idBonAchat) {
+    public void setIdBonAchat(DetailBonAchat idBonAchat) {
         this.idBonAchat = idBonAchat;
     }
 
-    public int getIdAchat() {
+    public BonAchat getIdAchat() {
         return idAchat;
     }
 
-    public void setIdAchat(int idAchat) {
+    public void setIdAchat(BonAchat idAchat) {
         this.idAchat = idAchat;
     }
 
-    public int getIdDeal() {
+    public Deal getIdDeal() {
         return idDeal;
     }
 
-    public void setIdDeal(int idDeal) {
+    public void setIdDeal(Deal idDeal) {
         this.idDeal = idDeal;
     }
 
@@ -69,8 +72,8 @@ public class DetailBonAchat {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + this.idBonAchat;
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.idBonAchat);
         return hash;
     }
 
@@ -83,7 +86,7 @@ public class DetailBonAchat {
             return false;
         }
         final DetailBonAchat other = (DetailBonAchat) obj;
-        if (this.idBonAchat != other.idBonAchat) {
+        if (!Objects.equals(this.idBonAchat, other.idBonAchat)) {
             return false;
         }
         return true;
@@ -94,6 +97,7 @@ public class DetailBonAchat {
         return "DetailBonAchat{" + "idBonAchat=" + idBonAchat + ", idAchat=" + idAchat + ", idDeal=" + idDeal + ", quantite=" + quantite + ", prix=" + prix + '}';
     }
 
+    
     
     
     

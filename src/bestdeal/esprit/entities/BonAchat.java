@@ -3,8 +3,12 @@
  * and open the template in the editor.
  */
 package bestdeal.esprit.entities;
+import bestdeal.esprit.entities.Administrateur;
+import bestdeal.esprit.entities.Fournisseur;
+import bestdeal.esprit.entities.BonAchat;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -12,43 +16,43 @@ import java.util.Date;
  */
 public class BonAchat {
     
-    private int idAchat;
-    private int idFournisseur;    
-    private int idAdmin;    
+    private BonAchat achat;
+    private Fournisseur fournisseur;    
+    private Administrateur admin;    
     private Date dateBonAchat;
 
-    public BonAchat(int idAchat, int idFournisseur, int idAdmin, Date dateBonAchat) {
-        this.idAchat = idAchat;
-        this.idFournisseur = idFournisseur;
-        this.idAdmin = idAdmin;
+    public BonAchat(BonAchat achat, Fournisseur fournisseur, Administrateur admin, Date dateBonAchat) {
+        this.achat = achat;
+        this.fournisseur = fournisseur;
+        this.admin = admin;
         this.dateBonAchat = dateBonAchat;
     }
 
     public BonAchat() {
     }
 
-    public int getIdAchat() {
-        return idAchat;
+    public BonAchat getAchat() {
+        return achat;
     }
 
-    public void setIdAchat(int idAchat) {
-        this.idAchat = idAchat;
+    public void setAchat(BonAchat achat) {
+        this.achat = achat;
     }
 
-    public int getIdFournisseur() {
-        return idFournisseur;
+    public Fournisseur getFournisseur() {
+        return fournisseur;
     }
 
-    public void setIdFournisseur(int idFournisseur) {
-        this.idFournisseur = idFournisseur;
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
     }
 
-    public int getIdAdmin() {
-        return idAdmin;
+    public Administrateur getAdmin() {
+        return admin;
     }
 
-    public void setIdAdmin(int idAdmin) {
-        this.idAdmin = idAdmin;
+    public void setAdmin(Administrateur admin) {
+        this.admin = admin;
     }
 
     public Date getDateBonAchat() {
@@ -61,8 +65,8 @@ public class BonAchat {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + this.idAchat;
+        int hash = 5;
+        hash = 47 * hash + Objects.hashCode(this.achat);
         return hash;
     }
 
@@ -75,7 +79,7 @@ public class BonAchat {
             return false;
         }
         final BonAchat other = (BonAchat) obj;
-        if (this.idAchat != other.idAchat) {
+        if (!Objects.equals(this.achat, other.achat)) {
             return false;
         }
         return true;
@@ -83,8 +87,9 @@ public class BonAchat {
 
     @Override
     public String toString() {
-        return "BonAchat{" + "idAchat=" + idAchat + ", idFournisseur=" + idFournisseur + ", idAdmin=" + idAdmin + ", dateBonAchat=" + dateBonAchat + '}';
+        return "BonAchat{" + "achat=" + achat + ", fournisseur=" + fournisseur + ", admin=" + admin + ", dateBonAchat=" + dateBonAchat + '}';
     }
+
     
     
 

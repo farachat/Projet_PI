@@ -13,11 +13,11 @@ import java.util.Date;
 public class Voucher {
     
     private int idVoucher;
-    private int idDetRes;
+    private DetailReservation idDetRes;
     private String detail;
     private Date dateVoucher;
 
-    public Voucher(int idVoucher, int idDetRes, String detail, Date dateVoucher) {
+    public Voucher(int idVoucher, DetailReservation idDetRes, String detail, Date dateVoucher) {
         this.idVoucher = idVoucher;
         this.idDetRes = idDetRes;
         this.detail = detail;
@@ -35,11 +35,11 @@ public class Voucher {
         this.idVoucher = idVoucher;
     }
 
-    public int getIdDetRes() {
+    public DetailReservation getIdDetRes() {
         return idDetRes;
     }
 
-    public void setIdDetRes(int idDetRes) {
+    public void setIdDetRes(DetailReservation idDetRes) {
         this.idDetRes = idDetRes;
     }
 

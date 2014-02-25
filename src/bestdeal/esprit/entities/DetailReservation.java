@@ -11,17 +11,20 @@ package bestdeal.esprit.entities;
 public class DetailReservation {
     
     private int idDetRes;
-    private int idReservation;
-    private int idDeal;
+    private Reservation idReservation;
+    private Deal idDeal;
     private int quantite;
     private float prixUnitaire;
 
-    public DetailReservation() {
-    }
-
-    public DetailReservation(int quantite, float prixUnitaire) {
+    public DetailReservation(int idDetRes, Reservation idReservation, Deal idDeal, int quantite, float prixUnitaire) {
+        this.idDetRes = idDetRes;
+        this.idReservation = idReservation;
+        this.idDeal = idDeal;
         this.quantite = quantite;
         this.prixUnitaire = prixUnitaire;
+    }
+
+    public DetailReservation() {
     }
 
     public int getIdDetRes() {
@@ -32,19 +35,19 @@ public class DetailReservation {
         this.idDetRes = idDetRes;
     }
 
-    public int getIdReservation() {
+    public Reservation getIdReservation() {
         return idReservation;
     }
 
-    public void setIdReservation(int idReservation) {
+    public void setIdReservation(Reservation idReservation) {
         this.idReservation = idReservation;
     }
 
-    public int getIdDeal() {
+    public Deal getIdDeal() {
         return idDeal;
     }
 
-    public void setIdDeal(int idDeal) {
+    public void setIdDeal(Deal idDeal) {
         this.idDeal = idDeal;
     }
 
@@ -65,10 +68,33 @@ public class DetailReservation {
     }
 
     @Override
-    public String toString() {
-        return "Detail_reservation{" + "idDetRes=" + idDetRes + ", idReservation=" + idReservation + ", idDeal=" + idDeal + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + '}';
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + this.idDetRes;
+        return hash;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DetailReservation other = (DetailReservation) obj;
+        if (this.idDetRes != other.idDetRes) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "DetailReservation{" + "idDetRes=" + idDetRes + ", idReservation=" + idReservation + ", idDeal=" + idDeal + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + '}';
+    }
+
+    
     
     
 }

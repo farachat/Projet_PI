@@ -4,62 +4,40 @@
  */
 package bestdeal.esprit.entities;
 
+import java.util.Objects;
+
 /**
  *
  * @author Fahmi
  */
 public class Evaluation {
     
-    private int idDeal;
-    private int idMembre;
+    private Deal idDeal;
+    private Membre idMembre;
     private int note;
 
     public Evaluation() {
     }
 
-    public Evaluation(int note) {
+    public Evaluation(Deal idDeal, Membre idMembre, int note) {
+        this.idDeal = idDeal;
+        this.idMembre = idMembre;
         this.note = note;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.idDeal;
-        hash = 29 * hash + this.idMembre;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Evaluation other = (Evaluation) obj;
-        if (this.idDeal != other.idDeal) {
-            return false;
-        }
-        if (this.idMembre != other.idMembre) {
-            return false;
-        }
-        return true;
-    }
-
-    public int getIdDeal() {
+    public Deal getIdDeal() {
         return idDeal;
     }
 
-    public void setIdDeal(int idDeal) {
+    public void setIdDeal(Deal idDeal) {
         this.idDeal = idDeal;
     }
 
-    public int getIdMembre() {
+    public Membre getIdMembre() {
         return idMembre;
     }
 
-    public void setIdMembre(int idMembre) {
+    public void setIdMembre(Membre idMembre) {
         this.idMembre = idMembre;
     }
 
@@ -72,9 +50,32 @@ public class Evaluation {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 61 * hash + Objects.hashCode(this.idMembre);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Evaluation other = (Evaluation) obj;
+        if (!Objects.equals(this.idMembre, other.idMembre)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "Evaluation{" + "idDeal=" + idDeal + ", idMembre=" + idMembre + ", note=" + note + '}';
     }
 
+    
    
 }

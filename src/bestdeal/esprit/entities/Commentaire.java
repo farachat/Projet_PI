@@ -12,35 +12,35 @@ import java.util.Date;
  */
 public class Commentaire {
     
-    private int idDeal;
-    private int idMembre;
+    private Deal deal;
+    private Membre membre;
     private String commentaire;
     private Date dateSys;
 
-    public Commentaire() {
-    }
-
-    public Commentaire(int idDeal, int idMembre, String commentaire, Date dateSys) {
-        this.idDeal = idDeal;
-        this.idMembre = idMembre;
+    public Commentaire(Deal deal, Membre membre, String commentaire, Date dateSys) {
+        this.deal = deal;
+        this.membre = membre;
         this.commentaire = commentaire;
         this.dateSys = dateSys;
     }
 
-    public int getIdDeal() {
-        return idDeal;
+    public Commentaire() {
     }
 
-    public void setIdDeal(int idDeal) {
-        this.idDeal = idDeal;
+    public Deal getDeal() {
+        return deal;
     }
 
-    public int getIdMembre() {
-        return idMembre;
+    public void setDeal(Deal deal) {
+        this.deal = deal;
     }
 
-    public void setIdMembre(int idMembre) {
-        this.idMembre = idMembre;
+    public Membre getMembre() {
+        return membre;
+    }
+
+    public void setMembre(Membre membre) {
+        this.membre = membre;
     }
 
     public String getCommentaire() {
@@ -60,32 +60,9 @@ public class Commentaire {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + this.idMembre;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Commentaire other = (Commentaire) obj;
-        if (this.idMembre != other.idMembre) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "Commentaire{" + "idDeal=" + idDeal + ", idMembre=" + idMembre + ", commentaire=" + commentaire + ", dateSys=" + dateSys + '}';
+        return "Commentaire{" + "deal=" + deal + ", membre=" + membre + ", commentaire=" + commentaire + ", dateSys=" + dateSys + '}';
     }
-    
     
     
 }
