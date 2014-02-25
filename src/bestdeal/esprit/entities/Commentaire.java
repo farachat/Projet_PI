@@ -16,7 +16,7 @@ public class Commentaire {
     private Membre membre;
     private String commentaire;
     private Date dateSys;
-    private int salma;
+    
 
     public Commentaire(Deal deal, Membre membre, String commentaire, Date dateSys) {
         this.deal = deal;
