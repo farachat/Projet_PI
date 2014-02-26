@@ -7,6 +7,8 @@ package bestdeal.esprit.gui;
 import bestdeal.esprit.controllers.commentaireController;
 import bestdeal.esprit.dao.CommentaireDAO;
 import bestdeal.esprit.entities.Commentaire;
+import bestdeal.esprit.entities.Deal;
+import bestdeal.esprit.entities.Membre;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,8 +35,8 @@ public class addCommentaire extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jTextFieldcomm = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,8 +48,8 @@ public class addCommentaire extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new commentaireController());
-        jScrollPane1.setViewportView(jTable1);
+        jTable2.setModel(new commentaireController());
+        jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,12 +58,12 @@ public class addCommentaire extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldcomm, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -71,9 +73,9 @@ public class addCommentaire extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldcomm, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -83,18 +85,20 @@ public class addCommentaire extends javax.swing.JFrame {
     private void jTextFieldcommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldcommActionPerformed
         // TODO add your handling code here:
         Commentaire comm = new Commentaire();
-       comm.setCommentaire(jTextFieldcomm.getText());
+        comm.setCommentaire(jTextFieldcomm.getText());
         CommentaireDAO commentaireDAO = new CommentaireDAO();
-        commentaireDAO.create(comm);
-        JOptionPane.showMessageDialog(this,"Ajout effectué avec succés ! ");
+        Membre membre = new Membre();
+        Deal deal = new Deal();
+        deal.setIdDeal(2);
+        membre.setIdMembre(2);
+       comm.setDateSys("10/10/2013");
+       comm.setMembre(membre);
+       comm.setDeal(deal);
+       commentaireDAO.create(comm);
         
-         jTable1 = new javax.swing.JTable();
-
-         jTable1.setModel(new commentaireController());
-
-         jScrollPane1.setViewportView(jTable1);
+       jTable2.setModel(new commentaireController());  
        
-       new commentaireController();
+       
     }//GEN-LAST:event_jTextFieldcommActionPerformed
 
     /**
@@ -133,8 +137,8 @@ public class addCommentaire extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextFieldcomm;
     // End of variables declaration//GEN-END:variables
 }
