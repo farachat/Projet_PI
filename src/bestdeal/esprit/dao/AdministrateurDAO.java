@@ -4,7 +4,7 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.Administrateur;
-import bestdeal.esprit.util.Connexion;
+import bestdeal.esprit.util.MyConnexion;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,7 +24,7 @@ public class AdministrateurDAO implements DAO<Administrateur> {
     public void create(Administrateur admin) {
         String requete = "insert into administrateur (login_admin,pwd_admin) values (?,?)";
         try{
-        PreparedStatement ps = Connexion.getInstance().prepareStatement(requete);
+        PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
         //ps.setInt(1, admin.getId_admin());
         ps.setString(1, admin.getLogin_admin());
         ps.setString(2, admin.getPwd_admin());
@@ -46,7 +46,7 @@ public class AdministrateurDAO implements DAO<Administrateur> {
         List<Administrateur> listeadmin = new ArrayList<Administrateur>(); 
         String requete = "select * from administrateur";
         try {
-            Statement statement = (Statement) Connexion.getInstance().createStatement();
+            Statement statement = (Statement) MyConnexion.getInstance().createStatement();
         ResultSet resultat = statement.executeQuery(requete);
         while(resultat.next())
         { 

@@ -24,8 +24,9 @@ public class Membre {
     private String telMembre;
     private String adressMembre;
     private String type;
+    private String pseudo;
 
-    public Membre(int cinMembre, String loginMembre, String pwdMembre, String nomMembre, String prenomMembre, Date dateNaissMembre, String mailMembre, String telMembre, String adressMembre, String type) {
+    public Membre(int cinMembre, String loginMembre, String pwdMembre, String nomMembre, String prenomMembre, Date dateNaissMembre, String mailMembre, String telMembre, String adressMembre, String type,String pseudo) {
         this.cinMembre = cinMembre;
         this.loginMembre = loginMembre;
         this.pwdMembre = pwdMembre;
@@ -36,6 +37,7 @@ public class Membre {
         this.telMembre = telMembre;
         this.adressMembre = adressMembre;
         this.type = type;
+        this.pseudo=pseudo;
     }
 
     public Membre() {
@@ -113,6 +115,13 @@ public class Membre {
 
     public void setPrenomMembre(String prenomMembre) {
         this.prenomMembre = prenomMembre;
+    }
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
     public Date getDateNaissMembre() {

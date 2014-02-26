@@ -4,7 +4,7 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.Deal;
-import bestdeal.esprit.util.Connexion;
+import bestdeal.esprit.util.MyConnexion;
 import java.sql.Connection;
 import java.util.List;
 /**
@@ -16,7 +16,7 @@ public class DealDAO implements DAO<Deal>{
     Connection con;
 
     public DealDAO() {
-        con= Connexion.getInstance();
+        con= MyConnexion.getInstance();
     }
     @Override
     public void create(Deal a) {

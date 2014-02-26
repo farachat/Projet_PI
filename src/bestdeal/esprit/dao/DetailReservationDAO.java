@@ -4,7 +4,7 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.DetailReservation;
-import bestdeal.esprit.util.Connexion;
+import bestdeal.esprit.util.MyConnexion;
 import java.sql.Connection;
 import java.util.List;
 /**
@@ -17,7 +17,7 @@ public class DetailReservationDAO implements DAO<DetailReservation>{
     Connection con;
 
     public DetailReservationDAO() {
-        con= Connexion.getInstance();
+        con= MyConnexion.getInstance();
     }
     
     @Override

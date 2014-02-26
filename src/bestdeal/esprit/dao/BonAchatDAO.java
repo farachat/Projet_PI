@@ -4,7 +4,7 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.BonAchat;
-import bestdeal.esprit.util.Connexion;
+import bestdeal.esprit.util.MyConnexion;
 import java.sql.Connection;
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class BonAchatDAO implements DAO<BonAchat>
     Connection con;
 
     public BonAchatDAO() {
-        con= Connexion.getInstance();
+        con= MyConnexion.getInstance();
     }
 
     @Override

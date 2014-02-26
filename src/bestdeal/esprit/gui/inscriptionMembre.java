@@ -153,12 +153,13 @@ public class inscriptionMembre extends javax.swing.JFrame {
         Membre m=new Membre();
          String mx=null;
       int i=Integer.parseInt(jTextField1.getText());
-     // Date d=Date.valueOf(jTextField6.getText());
+      Date d=Date.valueOf(jTextField6.getText());
       m.setCinMembre(i);
       m.setLoginMembre(jTextField2.getText());
       m.setPwdMembre(jTextField3.getText());
       m.setNomMembre(jTextField4.getText());
-     // m.setDateNaissMembre(d);
+      m.setDateNaissMembre(d);
+      System.out.println(m.getDateNaissMembre());
       m.setPrenomMembre(jTextField5.getText());
       m.setMailMembre(jTextField7.getText());
       m.setTelMembre(jTextField8.getText());
@@ -228,7 +229,7 @@ public class inscriptionMembre extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new inscriptionMembre().setVisible(true);
+                new inscriptionMembre().setVisible(false);
                 
                 
             }

@@ -6,6 +6,10 @@ package bestdeal.esprit.gui;
 
 import bestdeal.esprit.dao.AdministrateurDAO;
 import bestdeal.esprit.dao.MembreDAO;
+import bestdeal.esprit.entities.Membre;
+import bestdeal.esprit.facebook.ConnexionFacebook;
+
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 
@@ -42,7 +46,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,12 +96,12 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 150, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 150, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,27 +112,38 @@ public class AuthentificationMembre extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
           MembreDAO membre = new MembreDAO(); 
-        
-       for (int i = 0; i < membre.findAll().size(); i++)
+          boolean trouve = false;
+          /*
+          for(Membre m:membre.findAll()){
+              System.out.println(m);
+          }
+       */
+       for (int i = 0; i < membre.findAll().size()&& (trouve == false); i++)
        { 
-           if(membre.findAll().get(i).getLoginMembre().equals(jTextField1.getText()) && membre.findAll().get(i).getPwdMembre().equals(jPasswordField1.getText())) { 
-               System.out.print("dzdzd");
+           System.out.println(membre.findAll().get(i).getLoginMembre() );
+           if(membre.findAll().get(i).getLoginMembre().equals(jTextField1.getText()) && membre.findAll().get(i).getPwdMembre().equals(jTextField2.getText())) { 
+               
+               trouve = true;
+        } else
+           { 
+              trouve = false;
+           } }
+       if(trouve == true){
+           System.out.print("dzdzd");
+                 JOptionPane.showMessageDialog(this, "Bienvenue");
                AuthentificationMembre m=new AuthentificationMembre();
                this.setVisible(false);
                m.setVisible(true);
-        } else
-           { 
-               
-               System.out.print("5F");
-           JOptionPane.showMessageDialog(this, "Login ou Mot de passe invalid!!!!");
-           jTextField1.setText("");
-           jPasswordField1.setText("");
-           } }
+       }
+       else{
+           System.out.println("5F");
+       }
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        ConnexionFacebook connexionFacebook = new ConnexionFacebook();
+        connexionFacebook.loginFb();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -139,9 +154,9 @@ public class AuthentificationMembre extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +190,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
             public void run() {
                 
                 new AuthentificationMembre().setVisible(true);
+                
                
                 
             }
@@ -187,8 +203,8 @@ public class AuthentificationMembre extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
     

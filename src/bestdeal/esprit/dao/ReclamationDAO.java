@@ -4,7 +4,7 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.Reclamation;
-import bestdeal.esprit.util.Connexion;
+import bestdeal.esprit.util.MyConnexion;
 import java.sql.Connection;
 import java.util.List;
 /**
@@ -16,7 +16,7 @@ public class ReclamationDAO implements DAO<Reclamation>{
     Connection con;
 
     public ReclamationDAO() {
-        con= Connexion.getInstance();
+        con= MyConnexion.getInstance();
     }
     
     @Override
