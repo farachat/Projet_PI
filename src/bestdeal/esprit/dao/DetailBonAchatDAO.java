@@ -39,7 +39,7 @@ public class DetailBonAchatDAO implements DAO<DetailBonAchat>{
     }
 
     @Override
-    public boolean delete(DetailBonAchat a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

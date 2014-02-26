@@ -40,7 +40,7 @@ public class ReclamationDAO implements DAO<Reclamation>{
     }
 
     @Override
-    public boolean delete(Reclamation a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

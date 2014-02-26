@@ -39,7 +39,7 @@ public class ParrainageDAO implements DAO<Parrainage>{
     }
 
     @Override
-    public boolean delete(Parrainage a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

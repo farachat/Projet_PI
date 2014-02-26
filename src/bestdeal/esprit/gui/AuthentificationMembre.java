@@ -131,7 +131,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
        if(trouve == true){
            System.out.print("dzdzd");
                  JOptionPane.showMessageDialog(this, "Bienvenue");
-               AuthentificationMembre m=new AuthentificationMembre();
+               InterfaceMembre m=new InterfaceMembre();
                this.setVisible(false);
                m.setVisible(true);
        }
@@ -144,6 +144,9 @@ public class AuthentificationMembre extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         ConnexionFacebook connexionFacebook = new ConnexionFacebook();
         connexionFacebook.loginFb();
+        InterfaceMembre m=new InterfaceMembre();
+        this.setVisible(false);
+        m.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -16,6 +16,6 @@ public interface DAO <T> {
     void update(T a);
     List<T> findAll();
     T findById(int id);
-    boolean delete(T a);
+    void delete(int id);
     
 }

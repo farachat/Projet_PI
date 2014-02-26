@@ -39,7 +39,7 @@ public class StockDAO implements DAO<Stock>{
     }
 
     @Override
-    public boolean delete(Stock a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

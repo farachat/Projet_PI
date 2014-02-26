@@ -41,7 +41,7 @@ public class EvaluationDAO implements DAO<Evaluation>{
     }
 
     @Override
-    public boolean delete(Evaluation a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

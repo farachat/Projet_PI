@@ -41,7 +41,7 @@ public class DetailReservationDAO implements DAO<DetailReservation>{
     }
 
     @Override
-    public boolean delete(DetailReservation a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

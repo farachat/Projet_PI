@@ -121,8 +121,8 @@ public class ConnexionFacebook {
                                        facebookClient = new DefaultFacebookClient(access_token);
                                        User user = facebookClient.fetchObject("me", User.class);
                                        Page page = facebookClient.fetchObject("cocacola", Page.class);
-                                       // userName = user.getName();
-                                       //  userMail = user.getEmail();
+                                       userName = user.getName();
+                                       userMail = user.getEmail();
 
                                        authFrame.dispose();
                                        /**

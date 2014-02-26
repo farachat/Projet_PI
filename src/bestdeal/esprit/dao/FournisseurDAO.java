@@ -40,7 +40,7 @@ public class FournisseurDAO implements DAO<Fournisseur> {
     }
 
     @Override
-    public boolean delete(Fournisseur a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

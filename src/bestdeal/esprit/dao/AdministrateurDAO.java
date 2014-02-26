@@ -69,7 +69,7 @@ public class AdministrateurDAO implements DAO<Administrateur> {
     }
 
     @Override
-    public boolean delete(Administrateur a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

@@ -39,7 +39,7 @@ public class VoucherDAO implements DAO<Voucher>{
     }
 
     @Override
-    public boolean delete(Voucher a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

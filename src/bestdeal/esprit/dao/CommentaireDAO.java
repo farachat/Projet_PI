@@ -40,7 +40,7 @@ public class CommentaireDAO implements DAO<Commentaire>
     }
 
     @Override
-    public boolean delete(Commentaire a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

@@ -41,7 +41,7 @@ public class BonAchatDAO implements DAO<BonAchat>
     }
 
     @Override
-    public boolean delete(BonAchat a) {
+    public void delete(int a) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
