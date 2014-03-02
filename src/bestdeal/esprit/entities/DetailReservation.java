@@ -11,14 +11,14 @@ package bestdeal.esprit.entities;
 public class DetailReservation {
     
     private int idDetRes;
-    private Reservation idReservation;
+    private Reservation Reservation;
     private Deal idDeal;
     private int quantite;
     private float prixUnitaire;
 
-    public DetailReservation(int idDetRes, Reservation idReservation, Deal idDeal, int quantite, float prixUnitaire) {
+    public DetailReservation(int idDetRes, Reservation Reservation, Deal idDeal, int quantite, float prixUnitaire) {
         this.idDetRes = idDetRes;
-        this.idReservation = idReservation;
+        this.Reservation = Reservation;
         this.idDeal = idDeal;
         this.quantite = quantite;
         this.prixUnitaire = prixUnitaire;
@@ -35,12 +35,12 @@ public class DetailReservation {
         this.idDetRes = idDetRes;
     }
 
-    public Reservation getIdReservation() {
-        return idReservation;
+    public Reservation getReservation() {
+        return Reservation;
     }
 
-    public void setIdReservation(Reservation idReservation) {
-        this.idReservation = idReservation;
+    public void setReservation(Reservation Reservation) {
+        this.Reservation = Reservation;
     }
 
     public Deal getIdDeal() {
@@ -91,7 +91,7 @@ public class DetailReservation {
 
     @Override
     public String toString() {
-        return "DetailReservation{" + "idDetRes=" + idDetRes + ", idReservation=" + idReservation + ", idDeal=" + idDeal + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + '}';
+        return "DetailReservation{" + "idDetRes=" + idDetRes + ", idReservation=" + Reservation + ", idDeal=" + idDeal + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + '}';
     }
 
     

@@ -4,6 +4,7 @@
  */
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.Administrateur;
+import bestdeal.esprit.util.Connexion;
 import bestdeal.esprit.util.MyConnexion;
 import java.util.List;
 import java.sql.Connection;
@@ -61,6 +62,31 @@ public class AdministrateurDAO implements DAO<Administrateur> {
         System.out.println("erreur lors du chargement des admin "+ex.getMessage()); return null; 
         } 
     
+    }
+    public List<Administrateur> DisplayAllAdmins (){
+
+                    List<Administrateur> listeadmins = new ArrayList<Administrateur>();
+
+        String requete = "select * from administrateur";
+        try {
+           Statement statement = Connexion.getInstance()
+                   .createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+
+            while(resultat.next()){
+                Administrateur admin =new Administrateur();
+                admin.setLogin_admin(resultat.getString(2));
+                admin.setPwd_admin(resultat.getString(3));
+                
+
+                listeadmins.add(admin);
+            }
+            return listeadmins;
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des administrateurs "+ex.getMessage());
+            return null;
+        }
     }
 
     @Override

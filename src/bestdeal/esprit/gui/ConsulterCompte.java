@@ -4,6 +4,9 @@
  */
 package bestdeal.esprit.gui;
 
+import bestdeal.esprit.dao.MembreDAO;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Fahmi
@@ -16,6 +19,7 @@ public class ConsulterCompte extends javax.swing.JFrame {
     public ConsulterCompte() {
         initComponents();
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -122,7 +126,8 @@ public class ConsulterCompte extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 230, 40));
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-483)/2, (screenSize.height-347)/2, 483, 347);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -176,6 +181,7 @@ public class ConsulterCompte extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ConsulterCompte().setVisible(true);
+                
             }
         });
     }

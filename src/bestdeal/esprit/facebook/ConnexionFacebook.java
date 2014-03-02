@@ -121,8 +121,8 @@ public class ConnexionFacebook {
                                        facebookClient = new DefaultFacebookClient(access_token);
                                        User user = facebookClient.fetchObject("me", User.class);
                                        Page page = facebookClient.fetchObject("cocacola", Page.class);
-                                       userName = user.getName();
-                                       userMail = user.getEmail();
+                                     //  userName = user.getName();
+                                     //  userMail = user.getEmail();
 
                                        authFrame.dispose();
                                        /**
@@ -134,7 +134,9 @@ public class ConnexionFacebook {
                                        Membre membre = new Membre();
                                        membre.setMailMembre(userMail);
                                        membre.setPseudo(userName);
-                                       
+                                       System.out.println("**************");
+                                       System.out.println(membre.getPseudo());
+                                       System.out.println(membreDAO.findByPseudo(userName).getPseudo());
                                        
                                  registredUserName = membreDAO.findByPseudo(userName).getPseudo();
                                        
@@ -143,10 +145,10 @@ public class ConnexionFacebook {
                                            
                                            InterfaceMembre interfaceMembre = new InterfaceMembre();
                                            interfaceMembre.setVisible(true);
-                                           JOptionPane.showMessageDialog(interfaceMembre, "Bievenue" + registredUserName);
+                                           JOptionPane.showMessageDialog(interfaceMembre, "Bievenue " + registredUserName);
 
                                        } else {
-                                           membreDAO.create(membre);
+                                           membreDAO.myCreate(membre);
                                            InterfaceMembre interfaceMembre = new InterfaceMembre();
                                            interfaceMembre.setVisible(true);
                                        }

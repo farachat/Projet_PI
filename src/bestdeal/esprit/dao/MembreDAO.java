@@ -5,6 +5,7 @@
 package bestdeal.esprit.dao;
 import bestdeal.esprit.entities.Administrateur;
 import  bestdeal.esprit.entities.Membre;
+import bestdeal.esprit.util.Connexion;
 import bestdeal.esprit.util.MyConnexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,20 +25,40 @@ public class MembreDAO implements DAO<Membre>{
     
     @Override
     public void create(Membre a) {
-        String requete = "insert into membre (CIN_membre,login_membre,pwd_membre,nom_membre,prenom_membre,mail_membre,tel_membre,adresse,type) values (?,?,?,?,?,?,?,?,?)";
+        String requete = "insert into membre (CIN_membre,login_membre,pwd_membre,nom_membre,prenom_membre,date_naiss_membre,mail_membre,tel_membre,adresse,type) values (?,?,?,?,?,?,?,?,?,?)";
         try{
         PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
-        //Date date=Date.valueOf(a.getDateNaissMembre().toString());
+        Date x=(new java.sql.Date(a.getDateNaissMembre().getTime()));
         ps.setInt(1, a.getCinMembre());
         ps.setString(2, a.getLoginMembre());
         ps.setString(3, a.getPwdMembre());
         ps.setString(4, a.getNomMembre());
         ps.setString(5, a.getPrenomMembre());
-       // ps.setDate(6, date);
-        ps.setString(6, a.getMailMembre());
-        ps.setString(7, a.getTelMembre());
-        ps.setString(8, a.getAdressMembre());
-        ps.setString(9, a.getType());
+        ps.setDate(6, x);
+        ps.setString(7, a.getMailMembre());
+        ps.setString(8, a.getTelMembre());
+        ps.setString(9, a.getAdressMembre());
+        ps.setString(10, a.getType());
+        ps.executeUpdate();
+        System.out.println("Ajouté efféctué dans la table membre avec succès");     
+          }
+    catch(SQLException ex){
+    System.out.println("Problème d'insertion dans la table membre"+ex.getMessage());   
+                          }
+    }
+    
+
+    
+    
+    
+    public void myCreate(Membre a) {
+        String requete = "insert into membre (mail_membre,pseudo) values (?,?)";
+        try{
+        PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
+        
+        
+        ps.setString(1, a.getMailMembre());
+        ps.setString(2, a.getPseudo());
         ps.executeUpdate();
         System.out.println("Ajouté efféctué dans la table membre avec succès");     
           }
@@ -48,7 +69,7 @@ public class MembreDAO implements DAO<Membre>{
 
     @Override
     public void update(Membre a) {
-        String requete = "update membre set CIN_membre=?,login_membre=?,pwd_membre=?,nom_membre=?,prenom_membre=?,mail_membre=?,tel_membre=?,adresse=?,type=?";
+        String requete = "update membre set CIN_membre=?,login_membre=?,pwd_membre=?,nom_membre=?,prenom_membre=?,date_naiss_membre=?,mail_membre=?,tel_membre=?,adresse=?,type=?";
         try {
             PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
             
@@ -57,7 +78,7 @@ public class MembreDAO implements DAO<Membre>{
             ps.setString(3, a.getPwdMembre());
             ps.setString(4, a.getNomMembre());
             ps.setString(5, a.getPrenomMembre());
-            //ps.setDate(6, a.getDateNaissMembre());
+            ps.setDate(6, (new java.sql.Date(a.getDateNaissMembre().getTime())));
             ps.setString(7, a.getMailMembre());
             ps.setString(8, a.getTelMembre());
             ps.setString(9, a.getType());
@@ -112,11 +133,12 @@ public class MembreDAO implements DAO<Membre>{
         membre.setPwdMembre(resultat.getString(3));
         membre.setNomMembre(resultat.getString(4));
         membre.setPrenomMembre(resultat.getString(5));
-       // membre.setDateNaissMembre(resultat.getDate(6));
+        membre.setDateNaissMembre(resultat.getDate(6));
         membre.setMailMembre(resultat.getString(7));
         membre.setTelMembre(resultat.getString(8));
         membre.setAdressMembre(resultat.getString(9));
         membre.setType(resultat.getString(10));
+        membre.setPseudo(resultat.getString(11));
         
         }
         
@@ -139,19 +161,9 @@ public class MembreDAO implements DAO<Membre>{
             Membre membre =new Membre(); 
         while(resultat.next())
         { 
-            
+                     
         
-         
-        membre.setCinMembre(resultat.getInt(1));
-        membre.setLoginMembre(resultat.getString(2));
-        membre.setPwdMembre(resultat.getString(3));
-        membre.setNomMembre(resultat.getString(4));
-        membre.setPrenomMembre(resultat.getString(5));
-       // membre.setDateNaissMembre(resultat.getDate(6));
-        membre.setMailMembre(resultat.getString(7));
-        membre.setTelMembre(resultat.getString(8));
-        membre.setAdressMembre(resultat.getString(9));
-        membre.setType(resultat.getString(10));
+        membre.setPseudo(resultat.getString(12));
         
         }
         
@@ -162,6 +174,42 @@ public class MembreDAO implements DAO<Membre>{
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex); 
         System.out.println("erreur lors du chargement des membres "+ex.getMessage()); return null; 
         } 
+    }
+    
+     public List<Membre> DisplayAllMembre (){
+
+List<Membre> listemembre = new ArrayList<Membre>();
+
+        String requete = "select * from membre";
+        try {
+           Statement statement = Connexion.getInstance()
+                   .createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+
+            while(resultat.next()){
+                Membre membre =new Membre();
+                membre.setIdMembre(resultat.getInt(1));
+        membre.setCinMembre(resultat.getInt(2));
+        membre.setLoginMembre(resultat.getString(3));
+        membre.setPwdMembre(resultat.getString(4));
+        membre.setNomMembre(resultat.getString(5));
+        membre.setPrenomMembre(resultat.getString(6));
+        membre.setDateNaissMembre(resultat.getDate(7));
+        membre.setMailMembre(resultat.getString(8));
+        membre.setTelMembre(resultat.getString(9));
+        membre.setAdressMembre(resultat.getString(10));
+        membre.setType(resultat.getString(11));
+                
+                
+
+                listemembre.add(membre);
+            }
+            return listemembre;
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des membres "+ex.getMessage());
+            return null;
+        }
     }
 
 

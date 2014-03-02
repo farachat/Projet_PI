@@ -13,16 +13,16 @@ import java.util.Date;
 public class Reservation {
     
     private int idReservation;
-    private Membre idMembre;
+    private Membre membre;
     private String categorie;
     private Date dateReservation;
 
     public Reservation() {
     }
 
-    public Reservation(int idReservation, Membre idMembre, String categorie, Date dateReservation) {
+    public Reservation(int idReservation, Membre membre, String categorie, Date dateReservation) {
         this.idReservation = idReservation;
-        this.idMembre = idMembre;
+        this.membre = membre;
         this.categorie = categorie;
         this.dateReservation = dateReservation;
     }
@@ -36,11 +36,11 @@ public class Reservation {
     }
 
     public Membre getIdMembre() {
-        return idMembre;
+        return membre;
     }
 
-    public void setIdMembre(Membre idMembre) {
-        this.idMembre = idMembre;
+    public void setIdMembre(Membre membre) {
+        this.membre = membre;
     }
 
     public String getCategorie() {
@@ -83,7 +83,7 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" + "idReservation=" + idReservation + ", idMembre=" + idMembre + ", categorie=" + categorie + ", dateReservation=" + dateReservation + '}';
+        return "Reservation{" + "idReservation=" + idReservation + ", idMembre=" + membre + ", categorie=" + categorie + ", dateReservation=" + dateReservation + '}';
     }
 
     

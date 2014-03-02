@@ -12,6 +12,15 @@ import java.util.Date;
  */
 public class Commentaire {
     
+    private int IdCommentaire;
+
+    public int getIdCommentaire() {
+        return IdCommentaire;
+    }
+
+    public void setIdCommentaire(int IdCommentaire) {
+        this.IdCommentaire = IdCommentaire;
+    }
     private Deal deal;
     private Membre membre;
     private String commentaire;

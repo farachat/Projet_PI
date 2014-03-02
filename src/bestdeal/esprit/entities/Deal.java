@@ -20,6 +20,15 @@ public class Deal {
     private float prix;
     private String description;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    private String image;
+
     public Deal() {
     }
 

@@ -4,6 +4,11 @@
  */
 package bestdeal.esprit.gui;
 
+import bestdeal.esprit.entities.Membre;
+
+
+
+
 
 /**
  *
@@ -15,9 +20,14 @@ public class InterfaceMembre extends javax.swing.JFrame {
      * Creates new form InterfaceMembre
      */
     public InterfaceMembre() {
+         
         initComponents();
+        Membre membre=new Membre();
+        jLabel1.setText(membre.getPseudo());
+        System.out.println(membre.getPseudo());
+        
     }
-
+                                                                 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +42,7 @@ public class InterfaceMembre extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton4.setText("jButton4");
 
@@ -72,12 +83,20 @@ public class InterfaceMembre extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 360, 55));
 
-        pack();
+        jLabel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jLabel1ComponentShown(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 100, 10));
+
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-375)/2, (screenSize.height-281)/2, 375, 281);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.setVisible(false);
-        new ConsulterLesDeals().setVisible(true);
+        new AjoutDeal().setVisible(true);
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -94,9 +113,14 @@ public class InterfaceMembre extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       this.setVisible(false);
+       
+        this.setVisible(false);
        new AuthentificationMembre().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jLabel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel1ComponentShown
+      
+    }//GEN-LAST:event_jLabel1ComponentShown
 
     /**
      * @param args the command line arguments
@@ -129,6 +153,7 @@ public class InterfaceMembre extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
+                
                 new InterfaceMembre().setVisible(true);
             }
         });
@@ -139,5 +164,6 @@ public class InterfaceMembre extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
