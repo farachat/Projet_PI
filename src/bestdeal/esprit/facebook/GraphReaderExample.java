@@ -65,7 +65,10 @@ public class GraphReaderExample {
     out.println("Email: " + user.getEmail());
     out.println("ID Facebook: " + user.getId());
     out.println("About: " + user.getAbout());
-    out.println("Birthday: " + user.getBirthday());
+    out.println("Birthday: " + user.getBirthdayAsDate());
+    out.println("FirstName: " + user.getFirstName());
+    out.println("LastName: " + user.getLastName());
+    
     
     //out.println("Page likes: " + page.getLikes());
   }

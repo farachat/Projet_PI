@@ -59,17 +59,15 @@ public class DealDAO implements DAO<Deal>{
 
     @Override
     public void update(Deal a) {
-          String requete = "update deal set nom_deal=?, date_debut_deal=?, date_fin_deal=?, categorie=?, ville=?, prix=?, description=?,image=?";
+          String requete = "update deal set nom_deal=?, categorie=?, ville=?, prix=? where id_deal=?";
    try{
         PreparedStatement ps = Connexion.getInstance().prepareStatement(requete);
-          ps.setString(1, a.getNomDeal());
-            ps.setDate(2,(new java.sql.Date(a.getDateDebutDeal().getTime())));
-            ps.setDate(3, (new java.sql.Date(a.getDateFinDeal().getTime())));
-            ps.setString(4, a.getCategorie());
-             ps.setString(5, a.getVille());
-              ps.setFloat(6, a.getPrix());
-               ps.setString(7, a.getDescription());
-               ps.setString(8, a.getImage());
+           
+             ps.setString(1, a.getNomDeal());            
+             ps.setString(2, a.getCategorie());
+             ps.setString(3, a.getVille());
+             ps.setFloat(4, a.getPrix());
+             ps.setInt(5, a.getIdDeal()); 
             ps.executeUpdate();
             System.out.println("modification effectuÃ©e avec succÃ¨s");
         } 
@@ -77,6 +75,8 @@ public class DealDAO implements DAO<Deal>{
          System.out.println("erreur lors de modification "+ex.getMessage());
                            }
     }
+    
+    
 
     @Override
     public List<Deal> findAll() {
@@ -112,8 +112,9 @@ public class DealDAO implements DAO<Deal>{
 
     }
     
-    public Deal find_Deal_By_Nom(String nom) {
-                Deal deal = new Deal();
+    public List<Deal> find_Deal_By_Nom(String nom) {
+         List<Deal> listedeal = new ArrayList<Deal>();
+                
 
         String requete = "select * from deal where nom_deal='"+nom+"' ";
         try {
@@ -121,19 +122,19 @@ public class DealDAO implements DAO<Deal>{
             ResultSet resultat = statement.executeQuery(requete);
 
             while(resultat.next()){
-                
+               Deal deal = new Deal(); 
                deal.setIdDeal(resultat.getInt(1));
                deal.setNomDeal(resultat.getString(2));
-               deal.setDateDebutDeal(resultat.getDate(3));
-               deal.setDateFinDeal(resultat.getDate(4));
+              // deal.setDateDebutDeal(resultat.getDate(3));
+             //  deal.setDateFinDeal(resultat.getDate(4));
                deal.setCategorie(resultat.getString(5));    
                deal.setVille(resultat.getString(6));
                deal.setPrix(resultat.getFloat(7));
-               deal.setDescription(resultat.getString(8));
-               deal.setImage(resultat.getString(9));
-
+            //   deal.setDescription(resultat.getString(8));
+            //   deal.setImage(resultat.getString(9));
+                listedeal.add(deal);
             }
-            return deal;
+            return listedeal;
         } catch (SQLException ex) {
            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors du chargement des deal "+ex.getMessage());

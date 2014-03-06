@@ -94,21 +94,21 @@ public class AjoutDeal extends javax.swing.JFrame {
 
         jLabel11.setText("Quantité:");
 
-        jButtonreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/icon/quitter.png"))); // NOI18N
+        jButtonreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/quitter.png"))); // NOI18N
         jButtonreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonresetActionPerformed(evt);
             }
         });
 
-        jButton_ajout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/icon/ajout.png"))); // NOI18N
+        jButton_ajout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/ajout.png"))); // NOI18N
         jButton_ajout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_ajoutActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/icon/ajout_tof.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/ajout_tof.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

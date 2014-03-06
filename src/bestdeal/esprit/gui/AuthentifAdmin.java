@@ -30,12 +30,12 @@ public class AuthentifAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextFieldLogin = new javax.swing.JTextField();
-        jTextFieldPwd = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -50,8 +50,6 @@ public class AuthentifAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(null);
         getContentPane().add(jTextFieldLogin);
         jTextFieldLogin.setBounds(121, 80, 180, 40);
-        getContentPane().add(jTextFieldPwd);
-        jTextFieldPwd.setBounds(121, 140, 180, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/login.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -83,6 +81,14 @@ public class AuthentifAdmin extends javax.swing.JFrame {
         jLabel5.setText("Vous avez un compte ? Connectez-vous");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(61, 30, 250, 16);
+
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(120, 140, 180, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/bkg-7.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -116,15 +122,27 @@ public class AuthentifAdmin extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-386)/2, (screenSize.height-338)/2, 386, 338);
+        setBounds((screenSize.width-399)/2, (screenSize.height-372)/2, 399, 372);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
    AdministrateurDAO admin = new AdministrateurDAO(); 
         
+   if (jTextFieldLogin.getText().trim().isEmpty()&& jPasswordField1.getText().trim().isEmpty())
+       {
+           JOptionPane.showMessageDialog(null, "Aucun champ rempli !!!!!");
+       }
+       else{
+                if(jTextFieldLogin.getText().trim().isEmpty()|| jPasswordField1.getText().trim().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null, "champ Login ou Mot de passe est vide !!!!");
+                }
+                else
+           
+          {    
        for (int i = 0; i < admin.DisplayAllAdmins().size(); i++)
        { 
-           if(admin.DisplayAllAdmins().get(i).getLogin_admin().equals(jTextFieldLogin.getText()) && admin.DisplayAllAdmins().get(i).getPwd_admin().equals(jTextFieldPwd.getText())) { 
+           if(admin.DisplayAllAdmins().get(i).getLogin_admin().equals(jTextFieldLogin.getText()) && admin.DisplayAllAdmins().get(i).getPwd_admin().equals(jPasswordField1.getText())) { 
                System.out.print("dzdzd");
               MenuAdmin m=new MenuAdmin();
                this.setVisible(false);
@@ -136,10 +154,13 @@ public class AuthentifAdmin extends javax.swing.JFrame {
            System.out.print("aaaa");
            JOptionPane.showMessageDialog(this, "Login ou Mot de passe invalide !!!!");
            jTextFieldLogin.setText("");
-           jTextFieldPwd.setText("");
+           jPasswordField1.setText("");
            }
- }
-    
+ }}}
+      
+   MenuAdmin a=new MenuAdmin();
+   this.hide();
+   a.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -159,6 +180,10 @@ public class AuthentifAdmin extends javax.swing.JFrame {
         RecuperationMP rec =new RecuperationMP();
                 rec.setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,7 +231,7 @@ public class AuthentifAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldLogin;
-    private javax.swing.JTextField jTextFieldPwd;
     // End of variables declaration//GEN-END:variables
 }

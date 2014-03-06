@@ -4,6 +4,7 @@
  */
 package bestdeal.esprit.gui;
 
+import bestdeal.esprit.controllers.ListeDetailDeal;
 import bestdeal.esprit.controllers.ListeDetailReservControllers;
 import bestdeal.esprit.dao.DealDAO;
 import bestdeal.esprit.entities.Deal;

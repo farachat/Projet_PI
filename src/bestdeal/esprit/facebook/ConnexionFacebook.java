@@ -23,6 +23,7 @@ import java.awt.BorderLayout;
 import java.io.IOException;
 import java.io.StringReader;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -121,19 +122,27 @@ public class ConnexionFacebook {
                                        facebookClient = new DefaultFacebookClient(access_token);
                                        User user = facebookClient.fetchObject("me", User.class);
                                        Page page = facebookClient.fetchObject("cocacola", Page.class);
-                                     //  userName = user.getName();
-                                     //  userMail = user.getEmail();
+                                     
 
                                        authFrame.dispose();
                                        /**
-                                        * *****
+                                      
                                         */
                                        String userName = user.getName();
                                        String userMail = user.getEmail();
+                                       Date  userDate = user.getBirthdayAsDate();
+                                       String userFirstName= user.getFirstName();
+                                       String userLastName= user.getLastName();
+                                       
                                        MembreDAO membreDAO = new MembreDAO();
                                        Membre membre = new Membre();
                                        membre.setMailMembre(userMail);
                                        membre.setPseudo(userName);
+                                       AuthentificationMembre.setNomloginmembre(userName); 
+                                       membre.setDateNaissMembre(userDate);
+                                       membre.setNomMembre(userLastName);
+                                       membre.setPrenomMembre(userFirstName);
+                                       
                                        System.out.println("**************");
                                        System.out.println(membre.getPseudo());
                                        System.out.println(membreDAO.findByPseudo(userName).getPseudo());

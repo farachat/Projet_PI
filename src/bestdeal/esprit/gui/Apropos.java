@@ -38,7 +38,7 @@ public class Apropos extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("A propos de Best Deal");
         setPreferredSize(new java.awt.Dimension(650, 430));
         setResizable(false);
@@ -46,7 +46,7 @@ public class Apropos extends javax.swing.JFrame {
 
         jLabel1.setText("Développé par: ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 220, 130, 14);
+        jLabel1.setBounds(10, 220, 130, 16);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/logo.jpg"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(200, 80));
@@ -63,19 +63,19 @@ public class Apropos extends javax.swing.JFrame {
 
         jLabel7.setText("Uniquement des bons plans négociés au meilleur prix chez les commerçants de votre ville.");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 170, 560, 14);
+        jLabel7.setBounds(30, 170, 560, 16);
 
         jLabel6.setText("Maryem Ben Ammar,Fahmi Jomâa, Riahi Oussema, Saidane Nesrine, Souissi Salma, Torkhani Arbi ");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 250, 570, 14);
+        jLabel6.setBounds(30, 250, 570, 16);
 
         jLabel8.setText("3A17");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(380, 280, 90, 14);
+        jLabel8.setBounds(380, 280, 90, 16);
 
         jLabel9.setText("Esprit");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(380, 310, 90, 14);
+        jLabel9.setBounds(380, 310, 90, 16);
 
         jLabel10.setText("2013-2014");
         getContentPane().add(jLabel10);

@@ -249,7 +249,7 @@
     <Component class="javax.swing.JButton" name="jButtonreset">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/bestdeal/esprit/icon/quitter.png"/>
+          <Image iconType="3" name="/bestdeal/esprit/image/quitter.png"/>
         </Property>
       </Properties>
       <Events>
@@ -259,7 +259,7 @@
     <Component class="javax.swing.JButton" name="jButton_ajout">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/bestdeal/esprit/icon/ajout.png"/>
+          <Image iconType="3" name="/bestdeal/esprit/image/ajout.png"/>
         </Property>
       </Properties>
       <Events>
@@ -269,7 +269,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/bestdeal/esprit/icon/ajout_tof.png"/>
+          <Image iconType="3" name="/bestdeal/esprit/image/ajout_tof.png"/>
         </Property>
       </Properties>
       <Events>

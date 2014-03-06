@@ -17,14 +17,15 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author nesrin
  */
-public class ListeDealControllers extends AbstractTableModel{
+public class ListeDealControllersRecherche extends AbstractTableModel{
     String[] headers = {"Id deal","Nom deal","Catégorie", "Ville","Prix"};
     List<Deal> listeDeal = new ArrayList<Deal>();
     
 
-    public ListeDealControllers() {
+    public ListeDealControllersRecherche(String nom) {
+        
         DealDAO dealDAO = new DealDAO();
-        listeDeal = dealDAO.findAll();
+        listeDeal = dealDAO.find_Deal_By_Nom(nom);
     }
     @Override
     public int getRowCount() {

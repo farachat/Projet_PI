@@ -205,7 +205,7 @@ public class Note extends javax.swing.JFrame {
         // TODO add your handling code here: 
         DealDAO  dealDAO = new DealDAO();
            Deal d = new Deal();
-         d= dealDAO.find_Deal_By_Nom(jComboBox1.getSelectedItem().toString());
+         //d= dealDAO.find_Deal_By_Nom(jComboBox1.getSelectedItem().toString());
          System.out.println(d);
         jTextArea1.setText(d.getDescription());
        

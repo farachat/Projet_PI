@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package bestdeal.esprit.dao;
+import bestdeal.esprit.controllers.membreController;
 import bestdeal.esprit.entities.Administrateur;
 import  bestdeal.esprit.entities.Membre;
 import bestdeal.esprit.util.Connexion;
@@ -52,13 +53,19 @@ public class MembreDAO implements DAO<Membre>{
     
     
     public void myCreate(Membre a) {
-        String requete = "insert into membre (mail_membre,pseudo) values (?,?)";
+        String requete = "insert into membre (login_membre,mail_membre,pseudo,nom_membre,prenom_membre,date_naiss_membre) values (?,?,?,?,?,?)";
         try{
         PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
+        Date x=(new java.sql.Date(a.getDateNaissMembre().getTime()));
         
+        ps.setString(1, a.getPseudo());
+        ps.setString(2, a.getMailMembre());
+        ps.setString(3, a.getPseudo());
+        ps.setString(4, a.getNomMembre());
+        ps.setString(5, a.getPrenomMembre());
+        ps.setDate(6, x);
         
-        ps.setString(1, a.getMailMembre());
-        ps.setString(2, a.getPseudo());
+         
         ps.executeUpdate();
         System.out.println("Ajouté efféctué dans la table membre avec succès");     
           }
@@ -160,13 +167,9 @@ public class MembreDAO implements DAO<Membre>{
             ResultSet resultat = ps.executeQuery();
             Membre membre =new Membre(); 
         while(resultat.next())
-        { 
-                     
-        
+        {                    
         membre.setPseudo(resultat.getString(12));
-        
         }
-        
         return membre;
         
         } 
@@ -226,5 +229,7 @@ List<Membre> listemembre = new ArrayList<Membre>();
             System.out.println("erreur lors de la suppression "+ex.getMessage());
         }
     }
+
+    
     
 }

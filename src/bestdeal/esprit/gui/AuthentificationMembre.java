@@ -20,7 +20,15 @@ import javax.swing.JOptionPane;
  * @author Fahmi
  */
 public class AuthentificationMembre extends javax.swing.JFrame {
+ private static String nomloginmembre;
 
+    public static String getNomloginmembre() {
+        return nomloginmembre;
+    }
+
+    public static void setNomloginmembre(String nomloginmembre) {
+        AuthentificationMembre.nomloginmembre = nomloginmembre;
+    }
     /**
      * Creates new form AuthentificationMembre
      */
@@ -43,11 +51,11 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -87,13 +95,6 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 160, 30));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 150, 50));
-
         jLabel4.setForeground(new java.awt.Color(0, 0, 240));
         jLabel4.setText("s'inscrire");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -112,6 +113,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/motpasse.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 150, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/bkg-1.jpg"))); // NOI18N
         jLabel6.setText("jLabel4");
@@ -159,11 +161,22 @@ public class AuthentificationMembre extends javax.swing.JFrame {
               System.out.println(m);
           }
        */
-          
+       if (jTextField1.getText().trim().isEmpty()&& jPasswordField1.getText().trim().isEmpty())
+       {
+           JOptionPane.showMessageDialog(null, "Aucun champ rempli !!!!!");
+       }
+       else{
+                if(jTextField1.getText().trim().isEmpty()|| jPasswordField1.getText().trim().isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null, "champ Login ou Mot de passe est vide !!!!");
+                }
+                else
+           
+          {    
        for (int i = 0; i < membre.findAll().size()&& (trouve == false); i++)
        { 
            System.out.println(membre.findAll().get(i).getLoginMembre() );
-           if(membre.findAll().get(i).getLoginMembre().equals(jTextField1.getText()) && membre.findAll().get(i).getPwdMembre().equals(jTextField2.getText())) { 
+           if(membre.findAll().get(i).getLoginMembre().equals(jTextField1.getText()) && membre.findAll().get(i).getPwdMembre().equals(jPasswordField1.getText())) { 
                
                trouve = true;
         } else
@@ -172,7 +185,8 @@ public class AuthentificationMembre extends javax.swing.JFrame {
            } }
        if(trouve == true){
           
-                 JOptionPane.showMessageDialog(this, "Bienvenue");
+               JOptionPane.showMessageDialog(this, "Bienvenue "+jTextField1.getText());
+                setNomloginmembre(jTextField1.getText());  
                InterfaceMembre m=new InterfaceMembre();
                this.setVisible(false);
                m.setVisible(true);
@@ -181,18 +195,17 @@ public class AuthentificationMembre extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "login ou mot de passe invalide !!!!!");
         
        }
+       }
+       }
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         ConnexionFacebook connexionFacebook = new ConnexionFacebook();
         connexionFacebook.loginFb();
+        this.setVisible(false);
         
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         this.setVisible(false);
@@ -264,8 +277,8 @@ public class AuthentificationMembre extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
     
