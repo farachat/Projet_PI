@@ -109,5 +109,50 @@ public class CommentaireDAO implements DAO<Commentaire>
             System.out.println("erreur lors de la suppression "+ex.getMessage());
         }
     }
+    public void deleteCommentaire(int id){
+        String requete = "delete from commentaire where id_commentaire=?";
+        try {
+            PreparedStatement ps = Connexion.getInstance().prepareStatement(requete);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Commentaire supprimÃ©");
+        } catch (SQLException ex) {
+       
+            System.out.println("erreur lors de la suppression "+ex.getMessage());
+        }
+    }
+    public List<Commentaire> DisplayAllCommentaires (){
+
+
+        List<Commentaire> listecommentaires = new ArrayList<Commentaire>();
+
+        String requete = "select * from commentaire";
+        try {
+           Statement statement = Connexion.getInstance().createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+
+            while(resultat.next()){
+                Commentaire comm =new Commentaire();
+                Deal deal = new Deal();
+                Membre membre = new Membre();
+                DealDAO dealDao=new DealDAO();
+                comm.setIdCommentaire(resultat.getInt(1));
+                deal=dealDao.findById(resultat.getInt(2));
+                MembreDAO membreDao=new MembreDAO();
+                membre=membreDao.findById(resultat.getInt(3));
+                comm.setDeal(deal);
+                comm.setMembre(membre);
+                comm.setCommentaire(resultat.getString(4));
+                comm.setDateSys(resultat.getDate(5));
+                
+                listecommentaires.add(comm);
+            }
+            return listecommentaires;
+        } catch (SQLException ex) {
+           
+            System.out.println("erreur lors de la suppression "+ex.getMessage());
+            return null;
+            
+        }}
     
 }

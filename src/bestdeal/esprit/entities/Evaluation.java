@@ -11,10 +11,28 @@ import java.util.Objects;
  * @author Fahmi
  */
 public class Evaluation {
+
+    public int getIdEvaluation() {
+        return idEvaluation;
+    }
+
+    public void setIdEvaluation(int idEvaluation) {
+        this.idEvaluation = idEvaluation;
+    }
     
+    private int idEvaluation;
     private Deal idDeal;
     private Membre idMembre;
     private int note;
+
+    public float getMoyenne() {
+        return moyenne;
+    }
+
+    public void setMoyenne(float moyenne) {
+        this.moyenne = moyenne;
+    }
+    private float moyenne;
 
     public Evaluation() {
     }

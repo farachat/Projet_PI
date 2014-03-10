@@ -254,8 +254,8 @@ public class Note_1 extends javax.swing.JFrame {
         EvaluationDAO evaluationDAO = new EvaluationDAO();
         Evaluation ev= new Evaluation();
         int note = Integer.parseInt( jSpinner1.getValue().toString());
-//        ev.setIdDeal(deal);
-//        ev.setIdMembre();
+        ev.setIdDeal(deal);
+       // ev.setIdMembre();
         ev.setNote(note);
          evaluationDAO.create(ev);
         

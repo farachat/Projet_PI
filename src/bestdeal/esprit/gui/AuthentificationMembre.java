@@ -222,7 +222,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
                this.setVisible(false);
                me.setVisible(true);
                 }
-                else {
+                else {{
                     
                     if(m.getType().equals( "Vendeur"))
                    
@@ -234,6 +234,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
                 else
                 {
                     JOptionPane.showMessageDialog(this, "Vous n'etes pas un membre "+jTextField1.getText());
+                }
                 }}
        }
        else{

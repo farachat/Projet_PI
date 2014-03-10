@@ -7,6 +7,7 @@ import bestdeal.esprit.entities.Deal;
 import bestdeal.esprit.entities.Stock;
 import bestdeal.esprit.util.Connexion;
 import bestdeal.esprit.util.MyConnexion;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +24,8 @@ public class DealDAO implements DAO<Deal>{
 
     @Override
     public void create(Deal a) {
-       String requete ="insert into deal (nom_deal, date_debut_deal, date_fin_deal, categorie, ville, prix, description,image  ) values (?,?,?,?,?,?,?,?)";
+        
+       String requete ="insert into deal (nom_deal, date_debut_deal, date_fin_deal, categorie, ville, prix, description,image,pourcentage,details,id_fournisseur ) values (?,?,?,?,?,?,?,?,?,?,?)";
          try {
             PreparedStatement ps = Connexion.getInstance().prepareStatement(requete);
             ps.setString(1, a.getNomDeal());
@@ -34,12 +36,17 @@ public class DealDAO implements DAO<Deal>{
               ps.setFloat(6, a.getPrix());
                ps.setString(7, a.getDescription());
                ps.setString(8, a.getImage());
+               ps.setInt(9, a.getPourcentage());
+               ps.setString(10, a.getDetails());
+               ps.setInt(11, a.getIdFournisseur().getIdFournisseur());
             ps.executeUpdate();
             System.out.println("Ajout effectuÃ©e avec succÃ¨s");
         } catch (SQLException ex) {
          
             System.out.println("erreur lors de l'insertion "+ex.getMessage());
         }
+    }
+        
         /* Stock b=null;
          String req ="insert into stock ( id_deal, qte_stock_disponible, qte_stock_initial) values (?,?,?)";
          try {
@@ -55,7 +62,7 @@ public class DealDAO implements DAO<Deal>{
          
             System.out.println("erreur lors de l'insertion "+ex.getMessage());
         }*/
-    }
+    
 
     @Override
     public void update(Deal a) {
@@ -147,7 +154,7 @@ public class DealDAO implements DAO<Deal>{
     @Override
     public Deal findById(int id) {
  Deal deal = new Deal();
-     String requete = "select * from deal where id_deal=?";
+     String requete = "select id_deal,nom_deal from deal where id_deal=?";
         try {
             PreparedStatement ps = Connexion.getInstance().prepareStatement(requete);
             ps.setInt(1, id);
@@ -155,7 +162,7 @@ public class DealDAO implements DAO<Deal>{
             while (resultat.next())
             {
                 deal.setIdDeal(resultat.getInt(1));
-                
+          
             }
             return deal;
 
@@ -287,6 +294,7 @@ public class DealDAO implements DAO<Deal>{
                deal.setVille(resultat.getString(6));
                deal.setPrix(resultat.getFloat(7));
                deal.setDescription(resultat.getString(8));
+               deal.setImage(resultat.getString(9));
 
             }
             return deal;
@@ -298,5 +306,33 @@ public class DealDAO implements DAO<Deal>{
     
 
     }
+     public int create2(Deal a) {
+        int id =0;
+       String requete ="insert into deal (nom_deal, date_debut_deal, date_fin_deal, categorie, ville, prix, description,image,pourcentage,details,id_fournisseur ) values (?,?,?,?,?,?,?,?,?,?,?)";
+         try {
+            PreparedStatement ps = Connexion.getInstance().prepareStatement(requete, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setString(1, a.getNomDeal());
+            ps.setDate(2,(new java.sql.Date(a.getDateDebutDeal().getTime())));
+            ps.setDate(3,(new java.sql.Date(a.getDateFinDeal().getTime())));
+            ps.setString(4, a.getCategorie());
+             ps.setString(5, a.getVille());
+              ps.setFloat(6, a.getPrix());
+               ps.setString(7, a.getDescription());
+               ps.setString(8, a.getImage());
+               ps.setInt(9, a.getPourcentage());
+               ps.setString(10, a.getDetails());
+               ps.setInt(11, a.getIdFournisseur().getIdFournisseur());
+            ps.executeUpdate();
+            ResultSet Key= ps.getGeneratedKeys();
+            if (Key.next()){id= Key.getInt(1);}
+            return id;
+         
+          
+        } catch (SQLException ex) {
+         
+            System.out.println("erreur lors de l'insertion "+ex.getMessage());
+        }
+        return 0;
+}
     
 }

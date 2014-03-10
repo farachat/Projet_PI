@@ -51,17 +51,17 @@ public class RecuperationMP extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/email_encrypted64.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 30, 0, 0);
+        jLabel1.setBounds(30, 30, 64, 64);
 
         jLabel2.setText("Récupération du mot de passe");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(110, 50, 200, 16);
+        jLabel2.setBounds(110, 50, 200, 14);
 
         jLabel5.setText("Adresse Electronique :");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 130, 160, 16);
+        jLabel5.setBounds(40, 130, 160, 14);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(50, 160, 210, 22);
+        jTextField2.setBounds(50, 160, 210, 20);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/email.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,24 +90,26 @@ public class RecuperationMP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                 MembreDAO membre= new  MembreDAO(); 
+                 String From ="saidane.nesrine@gmail.com" ;
+                       String To = jTextField2.getText();
+                      
+
+                       MembreDAO membre= new  MembreDAO(); 
         
        for (int i = 0; i < membre.DisplayAllMembre().size(); i++)
        { 
-           if( membre.DisplayAllMembre().get(i).getMailMembre().equals(jTextField2.getText()))
-                { 
-               System.out.print("dzdzd");
-              String From = "bestdeal3a17@gmail.com" ;
-                       String To = jTextField2.getText();
-                       
-                       Properties pros = new Properties();
+           if( membre.DisplayAllMembre().get(i).getMailMembre().equals(jTextField2.getText())) { 
+               
+                     Properties pros = new Properties();
                        pros.put("mail.smtp.host", "smtp.gmail.com");
                        pros.put("mail.smtp.socketFactory.port", "465");
                        pros.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
                        pros.put("mail.smtp.auth", "true");
                        pros.put("mail.smtp.port", "465");
                        
-                      Session session = Session.getDefaultInstance(pros, 
+                       
+                       Session session = Session.getDefaultInstance(pros, 
+                               
                                
                                new javax.mail.Authenticator() {
                                
@@ -115,56 +117,55 @@ public class RecuperationMP extends javax.swing.JFrame {
                                protected PasswordAuthentication getPasswordAuthentication()
                                {
                                
-                               return new PasswordAuthentication("bestdeal3a17@gmail.com", "salma_souissi");
+                               return new PasswordAuthentication("saidane.nesrine@gmail.com", "sn08742785sn91");
                                
-                               }                             
-                                                              }
-                                                           
+                               }
+                               
+                               }
+                               
                                );
-                       
-                        try {
+                                              
+                       try {
                        
                             Message message = new MimeMessage(session);
                             message.setFrom(new InternetAddress(From));
                             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(To));
-                            message.setSubject("Recupération de mot de passe");
-                            message.setText("Votre mot de passe est : !!!!! :" +membre.DisplayAllMembre().get(i).getPwdMembre() );
+                            message.setSubject("Récupération de mot de passe");
+                            message.setText("Bienvenue " +membre.DisplayAllMembre().get(i).getNomMembre() +" "+membre.DisplayAllMembre().get(i).getPrenomMembre()+
+",\n"+
+" Votre demande de récupération de votre mot de passe a été approuvée par notre équipe d'administration."+
+"\n Voici les informations de votre compte : "+
+"\n Adresse e-mail :"+membre.DisplayAllMembre().get(i).getMailMembre()+
+"\n Identifiant :"+membre.DisplayAllMembre().get(i).getLoginMembre()+
+"\n Mot de passe :"+membre.DisplayAllMembre().get(i).getPwdMembre()+
+"\n Nous sommes heureux de vous accueillir parmi nous."+
+"\n Profitez de l'expérience! "+
+"\n Cordialement, "+
+"\n Équipe d'administration de l’application BEST DEAL .");  
+             
+
                             Transport.send(message);
-                            
-                            
-                       JOptionPane.showMessageDialog(null, "Votre message de récupération de mot de passe a été envoyé avec succès ");
-                       
-                       this.setVisible(false);
-                        AuthentifAdmin a=new AuthentifAdmin();
-                        a.setVisible(true);
+                              
+                       JOptionPane.showMessageDialog(null, "Votre message de récupération a été envoyé avec succès ");
+
                        }
-                      
+                       
                        catch(Exception e )
                        {
-                           
-                       JOptionPane.showMessageDialog(null, "Verifier l'adresse email saisi");
-                       this.setVisible(false);
-                        AuthentifAdmin a=new AuthentifAdmin();
-                        a.setVisible(true);
-                       
-                       }  
-                        
-        } 
-           else
-           { 
+                          
+                       JOptionPane.showMessageDialog(null, "Verifier les emails saisis");
+                       jTextField2.setText("");
+                       }                       
+
+                              } 
+
+ }       
                
-          
-           JOptionPane.showMessageDialog(this, "Adresse email invalide !!!!");
-           jTextField2.setText("");
-           
-           }    
-     }         
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        AuthentifAdmin a=new AuthentifAdmin();
+        AuthentificationMembre  a=new AuthentificationMembre();
         a.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

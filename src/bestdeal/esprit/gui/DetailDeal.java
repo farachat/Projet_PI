@@ -16,21 +16,27 @@ import bestdeal.esprit.entities.Commentaire;
 import bestdeal.esprit.entities.Deal;
 import bestdeal.esprit.entities.Evaluation;
 import bestdeal.esprit.entities.Fournisseur;
+import bestdeal.esprit.entities.Membre;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import bestdeal.esprit.map.StaticMaps;
+import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaLookAndFeel;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -52,20 +58,35 @@ private int note;
      * Creates new form DetailDeal
      */
     public DetailDeal() {
+        try {
+            SyntheticaLookAndFeel.setWindowsDecorated(false);
+
+        UIManager.put("Synthetica.dialog.icon.enabled", true);
+      
+         
+      UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
+     
         
+             initComponents();
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(addCommentaire.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(addCommentaire.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
          n=AuthentificationMembre.getNomloginmembre();
          jTable2.setVisible(false);
         id=d.getId(); 
         jlabelNomCompte.setText(n);
         deal  = DDAO.findByIddd(id);
+        
         jLabel2.setText(deal.getDescription());
         jLabel3.setText(deal.getImage());
         jLabel6.setText(deal.getDetails());
         jLabel10.setText(String.valueOf(deal.getPrix()));
         jLabel11.setText(String.valueOf((((deal.getPrix())*(deal.getPourcentage())/100))));
         jLabel1.setText((String.valueOf((deal.getPrix())-((deal.getPrix())*(deal.getPourcentage())/100))));
-       
+        jLabel4.setText(deal.getDateDebutDeal().toString());
         f= FDAO.findById(deal.getIdFournisseur().getIdFournisseur());
         System.out.println(f);
        
@@ -144,7 +165,6 @@ private int note;
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -173,6 +193,7 @@ private int note;
         jetoile3 = new javax.swing.JLabel();
         jetoile4 = new javax.swing.JLabel();
         jetoile5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jlabelbackground = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
@@ -192,11 +213,9 @@ private int note;
         jLabel3.setText("Image");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
 
-        jButton1.setText("Réserver");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 630, -1, -1));
-
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 60, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(214, 12, 12));
@@ -204,8 +223,9 @@ private int note;
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 130, 50));
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, 90, 40));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("jLabel9");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 210, 30));
 
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,10 +250,13 @@ private int note;
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(240, 0, 0));
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, 40));
+        jLabel1.setToolTipText("");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 140, 40));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(240, 0, 0));
         jLabel5.setText("DT");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
@@ -250,11 +273,13 @@ private int note;
         jLabel15.setText("%");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, -1, -1));
 
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel16.setText("jLabel16");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 320, 30));
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel17.setText("jLabel17");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, -1, -1));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 510, 250, 30));
 
         jTable2.setModel(new bestdeal.esprit.controllers.CommentaireClientControllers());
         jTable2.getColumnModel().getColumn(4).setMaxWidth(0);
@@ -279,7 +304,7 @@ private int note;
                 jSlider1StateChanged(evt);
             }
         });
-        getContentPane().add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 480, -1, 180));
+        getContentPane().add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 460, 10, 180));
 
         jCombo_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "roadmap", "satellite", "hybrid", "terrain" }));
         getContentPane().add(jCombo_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, 100, -1));
@@ -345,13 +370,17 @@ private int note;
         });
         getContentPane().add(jetoile5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, -1, -1));
 
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 220, 40));
+
         jlabelbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/slider-background-4.jpg"))); // NOI18N
         jlabelbackground.setText("sfsffddf");
         jlabelbackground.setToolTipText("");
-        getContentPane().add(jlabelbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, -1));
+        jlabelbackground.setAutoscrolls(true);
+        getContentPane().add(jlabelbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 710));
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-1191)/2, (screenSize.height-759)/2, 1191, 759);
+        setBounds((screenSize.width-1189)/2, (screenSize.height-747)/2, 1189, 747);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -396,9 +425,12 @@ private int note;
 
         EvaluationDAO evaluationDAO = new EvaluationDAO();
         Evaluation ev= new Evaluation();
+        int mm=AuthentificationMembre.getIdmembreint();
+        Membre x=new Membre();
+        x.setIdMembre(mm);
         int note = Integer.parseInt( jSpinner1.getValue().toString());
-        //        ev.setIdDeal(deal);
-        //        ev.setIdMembre();
+         ev.setIdDeal(deal);
+         ev.setIdMembre(x);
         ev.setNote(note);
         evaluationDAO.create(ev);
 
@@ -495,7 +527,6 @@ private int note;
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -511,6 +542,7 @@ private int note;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

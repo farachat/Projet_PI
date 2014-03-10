@@ -170,7 +170,23 @@ public class ConsulterCompte extends javax.swing.JFrame {
         
         
         this.setVisible(false);
-        new InterfaceMembre().setVisible(true);
+        if(jTextField10.getText().equals( "Membre"))
+                {
+               InterfaceMembre me=new InterfaceMembre();
+               this.setVisible(false);
+               me.setVisible(true);
+                }
+                else {
+                    
+                    if(jTextField10.getText().equals( "Vendeur"))
+                   
+                {
+                    InterfaceVendeur mv=new InterfaceVendeur();
+               this.setVisible(false);
+               mv.setVisible(true);
+                }
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

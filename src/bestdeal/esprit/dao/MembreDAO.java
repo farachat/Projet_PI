@@ -159,6 +159,47 @@ public class MembreDAO implements DAO<Membre>{
         System.out.println("erreur lors du chargement des membres "+ex.getMessage()); return null; 
         } 
     }
+    public void desactiverCompte(int id_membre)
+    {
+        String requete="update membre set Etat_compte=1 where id_membre="+id_membre;
+        try
+        {
+            PreparedStatement ps=Connexion.getInstance().prepareStatement(requete);
+            ps.executeUpdate();
+            System.out.println("Mise Ã  jour effectuÃ©e avec succes");
+            
+        }catch(SQLException ex)
+        {
+            System.out.println("erreur lors de la mise Ã  jour"+ex.getMessage());
+        }
+    }    
+    
+    public Membre findByIddd(int id) {
+        Membre membre =new Membre();
+        String requete = "select id_membre from membre where id_membre=?";
+        try {
+            PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
+            ps.setInt(1, id);
+            ResultSet resultat = ps.executeQuery();
+           
+        while(resultat.next())
+        {    
+           
+            
+        membre.setIdMembre(resultat.getInt(1));
+       
+  
+        
+        }
+        
+        return membre;
+        
+        } 
+        catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex); 
+        System.out.println("erreur lors du chargement des membres "+ex.getMessage()); return null; 
+        } 
+    }
     
     public Membre findByIdd(String id) {
         String requete = "select id_membre from membre where login_membre=?";

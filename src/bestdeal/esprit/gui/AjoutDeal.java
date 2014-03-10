@@ -5,7 +5,10 @@
 package bestdeal.esprit.gui;
 
 import bestdeal.esprit.dao.DealDAO;
+import bestdeal.esprit.dao.StockDAO;
 import bestdeal.esprit.entities.Deal;
+import bestdeal.esprit.entities.Fournisseur;
+import bestdeal.esprit.entities.Stock;
 import java.io.File;
 import java.util.Date;
 import javax.swing.JFileChooser;
@@ -14,7 +17,15 @@ import javax.swing.JFileChooser;
  * @author Oussama
  */
 public class AjoutDeal extends javax.swing.JFrame {
+public static int xxx;
 
+    public static int getXxx() {
+        return xxx;
+    }
+
+    public static void setXxx(int xxx) {
+        AjoutDeal.xxx = xxx;
+    }
     /**
      * Creates new form AjoutDeal
      */
@@ -61,6 +72,12 @@ public class AjoutDeal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jTextdetail = new javax.swing.JTextField();
+        jTextpourcentage = new javax.swing.JTextField();
 
         jFileChooser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,29 +87,47 @@ public class AjoutDeal extends javax.swing.JFrame {
         jFImageChooser.getContentPane().add(jFileChooser, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Catégorie:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 100, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Ajouter Deal");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 140, 40));
 
         jLabel4.setText("Deal:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 50, -1));
 
         jLabel5.setText("Date Début:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 90, -1));
 
         jLabel6.setText("Date fin:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 70, 20));
 
         jLabel7.setText("Ville:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 40, -1));
 
         jLabel8.setText("Description:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 80, -1));
 
         jLabel9.setText("Prix:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 360, 50, -1));
+        getContentPane().add(jDate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 140, -1));
+        getContentPane().add(jDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 110, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 220, 90));
+        getContentPane().add(jTextDeal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 120, -1));
+        getContentPane().add(jTextville, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 70, -1));
+        getContentPane().add(jTextPrix, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 90, -1));
+
         jLabel11.setText("Quantité:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 70, -1));
+        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 100, -1));
 
         jButtonreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/quitter.png"))); // NOI18N
         jButtonreset.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +135,7 @@ public class AjoutDeal extends javax.swing.JFrame {
                 jButtonresetActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 70, 50));
 
         jButton_ajout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/ajout.png"))); // NOI18N
         jButton_ajout.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +143,7 @@ public class AjoutDeal extends javax.swing.JFrame {
                 jButton_ajoutActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton_ajout, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 70, 50));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/ajout_tof.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +151,7 @@ public class AjoutDeal extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 70, 60));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "sport", "Informatique", "santé", "cosmitique" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -121,113 +159,35 @@ public class AjoutDeal extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, -1));
 
         jLabel10.setText("jLabel10");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 160, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextDeal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jTextville, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jTextPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(jButton_ajout, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jButtonreset, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextDeal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextPrix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_ajout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonreset, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jLabel12.setText("Pourcentage :");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+
+        jLabel13.setText("Details :");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, -1, -1));
+
+        jLabel14.setText("Fournisseur :");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, -1, -1));
+        getContentPane().add(jTextdetail, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 150, -1));
+
+        jTextpourcentage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextpourcentageActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextpourcentage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 50, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,6 +197,7 @@ public class AjoutDeal extends javax.swing.JFrame {
     
         DealDAO da = new DealDAO();
         Deal d = new Deal();
+        
         String mx= null;
         if (jComboBox1.getSelectedIndex()==0){
             mx="sport";
@@ -251,10 +212,38 @@ public class AjoutDeal extends javax.swing.JFrame {
             mx="cosmitique";
         }
            
+           int nn=0;
+        if (jComboBox2.getSelectedIndex()==0){
+            nn=1;
+        }
+         if (jComboBox2.getSelectedIndex()==1){
+            nn=2;
+        }
+          if (jComboBox2.getSelectedIndex()==2){
+            nn=3;
+        }
+           if (jComboBox2.getSelectedIndex()==3){
+            nn=4;
+        }
+            if (jComboBox2.getSelectedIndex()==4){
+            nn=5;
+        }
+             if (jComboBox2.getSelectedIndex()==5){
+            nn=6;
+        }
+              if (jComboBox2.getSelectedIndex()==6){
+            nn=7;
+        }
+          
+         
+           
       String nom = jTextDeal.getText();
        String description = jTextArea1.getText();
        String ville = jTextville.getText();     
         float prix = Float.parseFloat(jTextPrix.getText());
+        int pr=Integer.parseInt(jTextpourcentage.getText());
+        String det=jTextdetail.getText();
+        
         
        d.setPrix(prix);
        
@@ -263,12 +252,31 @@ d.setCategorie(mx);
      d.setNomDeal(nom);
      d.setDescription(description);
      d.setVille(ville);
-             
+   Fournisseur f=new Fournisseur(); 
+   f.setIdFournisseur(nn);
+   StockDAO sDao=new StockDAO();
+   Stock sss=new Stock();
+   
+   
+   
+   
+   int qte=Integer.parseInt(jSpinner1.getValue().toString());
+   
+   sss.setQteStockDisponible(qte);
+   sss.setQteStockInitial(qte);
+   
+  
+        
         Date  dateDebutDeal= jDate1.getDate();
      d.setDateDebutDeal(dateDebutDeal);
      d.setDateFinDeal(jDate2.getDate());
      d.setImage(jLabel10.getText());
-      da.create(d);
+     d.setPourcentage(pr);
+     d.setDetails(det);
+     d.setIdFournisseur(f);
+     
+      int id = da.create2(d);
+      sDao.create2(sss, id);
     }//GEN-LAST:event_jButton_ajoutActionPerformed
 
     private void jButtonresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonresetActionPerformed
@@ -297,6 +305,14 @@ d.setCategorie(mx);
         System.out.println(jFileChooser.getSelectedFile().getPath());
         jFImageChooser.setVisible(false);
     }//GEN-LAST:event_jFileChooserActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jTextpourcentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextpourcentageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextpourcentageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +354,7 @@ d.setCategorie(mx);
     private javax.swing.JButton jButton_ajout;
     private javax.swing.JButton jButtonreset;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private com.toedter.calendar.JDateChooser jDate1;
     private com.toedter.calendar.JDateChooser jDate2;
     private javax.swing.JFrame jFImageChooser;
@@ -345,6 +362,9 @@ d.setCategorie(mx);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -358,6 +378,8 @@ d.setCategorie(mx);
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextDeal;
     private javax.swing.JTextField jTextPrix;
+    private javax.swing.JTextField jTextdetail;
+    private javax.swing.JTextField jTextpourcentage;
     private javax.swing.JTextField jTextville;
     // End of variables declaration//GEN-END:variables
 }
