@@ -6,6 +6,7 @@ package bestdeal.esprit.gui;
 
 import bestdeal.esprit.entities.Membre;
 import bestdeal.esprit.gui.AuthentificationMembre;
+import bestdeal.esprit.gui.ListesDeals;
 
 
 
@@ -17,6 +18,7 @@ import bestdeal.esprit.gui.AuthentificationMembre;
  */
 public class InterfaceMembre extends javax.swing.JFrame {
 private String n;
+private int idm;
 
     
     /**
@@ -26,6 +28,7 @@ private String n;
        
         initComponents();
          n=AuthentificationMembre.getNomloginmembre();
+         idm=AuthentificationMembre.getIdmembreint();
         Membre membre=new Membre();
         jLabel2.setText(n);
         System.out.println(membre.getPseudo());
@@ -48,7 +51,7 @@ private String n;
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         jButton4.setText("jButton4");
 
@@ -63,52 +66,57 @@ private String n;
         setMinimumSize(new java.awt.Dimension(280, 280));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Consulter les deals");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/9-5.jpg"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 360, 55));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 200, 190));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/images (3).jpg"))); // NOI18N
         jButton2.setText("Consulter Compte");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 360, 55));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 190, 190));
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/Power - Standby_1.png"))); // NOI18N
         jButton3.setText("Déconnexion");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 360, 55));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 80, 70));
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/téléchargement.png"))); // NOI18N
         jButton5.setText("Réclamation");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 360, 55));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, 110, 90));
 
-        jLabel2.setForeground(new java.awt.Color(240, 100, 0));
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(240, 240, 0));
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 120, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 340, 40));
 
-        jLabel3.setText("Hello");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 6, -1, 20));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/bkk.gif"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1080, -1));
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-378)/2, (screenSize.height-371)/2, 378, 371);
+        setBounds((screenSize.width-1045)/2, (screenSize.height-765)/2, 1045, 765);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.setVisible(false);
-        new ListeDeal().setVisible(true);
+        new ListesDeals().setVisible(true);
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -178,6 +186,6 @@ private String n;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

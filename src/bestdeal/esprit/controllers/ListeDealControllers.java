@@ -18,7 +18,7 @@ import javax.swing.table.AbstractTableModel;
  * @author nesrin
  */
 public class ListeDealControllers extends AbstractTableModel{
-    String[] headers = {"Id deal","Nom deal","Catégorie", "Ville","Prix"};
+    String[] headers = {"Id deal ","Nom deal ", "Catégorie", "Ville","Prix"};
     List<Deal> listeDeal = new ArrayList<Deal>();
     
 
@@ -39,12 +39,11 @@ public class ListeDealControllers extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        
          switch (columnIndex) {
-            case 0:
-               
+            case 0:   
                 return listeDeal.get(rowIndex).getIdDeal();
-            case 1:
-               
+            case 1:   
                 return listeDeal.get(rowIndex).getNomDeal();
             case 2:
                 return listeDeal.get(rowIndex).getCategorie();

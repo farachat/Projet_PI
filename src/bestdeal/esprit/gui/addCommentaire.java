@@ -4,7 +4,8 @@
  */
 package bestdeal.esprit.gui;
 
-import bestdeal.esprit.controllers.commentaireController;
+import bestdeal.esprit.controllers.CommentaireClientControllers;
+import bestdeal.esprit.controllers.CommentaireClientControllers;
 import bestdeal.esprit.dao.CommentaireDAO;
 import bestdeal.esprit.dao.DealDAO;
 import bestdeal.esprit.entities.Commentaire;
@@ -95,7 +96,7 @@ public class addCommentaire extends javax.swing.JFrame {
         getContentPane().add(jTextFieldcomm);
         jTextFieldcomm.setBounds(200, 80, 320, 30);
 
-        jTable2.setModel(new commentaireController());
+        jTable2.setModel(new CommentaireClientControllers());
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable2MouseClicked(evt);
@@ -105,8 +106,6 @@ public class addCommentaire extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(20, 210, 550, 110);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\fichier compressé\\Monkee-Boy Blurred Backgrounds\\bkg-1.jpg")); // NOI18N
         getContentPane().add(jLabel3);
         jLabel3.setBounds(-10, 0, 610, 430);
 
@@ -128,7 +127,7 @@ public class addCommentaire extends javax.swing.JFrame {
 //        comm.setDeal(deal);
 //        commentaireDAO.create(comm);
 
-        jTable2.setModel(new commentaireController());
+        jTable2.setModel(new CommentaireClientControllers());
        jTextFieldcomm.setText(null);
     }//GEN-LAST:event_jTextFieldcommActionPerformed
 

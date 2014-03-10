@@ -165,6 +165,59 @@ public class DealDAO implements DAO<Deal>{
             return null;
         }
     }
+    
+    public Deal findByIdd(int id) {
+ Deal deal = new Deal();
+     String requete = "select nom_deal from deal where id_deal=?";
+        try {
+            PreparedStatement ps = Connexion.getInstance().prepareStatement(requete);
+            ps.setInt(1, id);
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next())
+            {
+                deal.setNomDeal(resultat.getString(1));
+                
+            }
+            return deal;
+
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors de la recherche du deal "+ex.getMessage());
+            return null;
+        }
+    }
+    
+    public Deal findByIddd(int id) {
+        String requete = "select * from deal where id_deal=?";
+        try{
+        PreparedStatement ps = Connexion.getInstance().prepareStatement(requete);
+        ps.setInt(1, id);
+        ResultSet resultat = ps.executeQuery();
+        DealDAO dealDAO = new DealDAO();
+        FournisseurDAO f =new FournisseurDAO();
+        Deal deal = new Deal();
+        while (resultat.next()){
+            deal.setIdDeal(resultat.getInt(1));
+            deal.setNomDeal(resultat.getString(2));
+            deal.setDateDebutDeal(resultat.getDate(3));
+            deal.setDateFinDeal(resultat.getDate(4));
+            deal.setCategorie(resultat.getString(5));
+            deal.setVille(resultat.getString(6));
+            deal.setPrix(resultat.getFloat(7));
+            deal.setDescription(resultat.getString(8));
+            deal.setImage(resultat.getString(9)); 
+            deal.setPourcentage(resultat.getInt(10));
+            deal.setDetails(resultat.getString(11));                      
+            deal.setIdFournisseur(f.findById(resultat.getInt(12)));
+            
+        }
+        return deal;
+        }
+        catch(SQLException ex){
+            System.out.println("erreur lors du chargement"+ex.getMessage());
+            return null;
+        }
+    }
 
    
 
@@ -215,6 +268,35 @@ public class DealDAO implements DAO<Deal>{
             return null;
         }
     
+    }
+    public Deal find_Deal_By_N(String nom) {
+                Deal deal = new Deal();
+
+        String requete = "select * from deal where nom_deal='"+nom+"' ";
+        try {
+           Statement statement = Connexion.getInstance().createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+
+            while(resultat.next()){
+                
+               deal.setIdDeal(resultat.getInt(1));
+               deal.setNomDeal(resultat.getString(2));
+               deal.setDateDebutDeal(resultat.getDate(3));
+               deal.setDateFinDeal(resultat.getDate(4));
+               deal.setCategorie(resultat.getString(5));    
+               deal.setVille(resultat.getString(6));
+               deal.setPrix(resultat.getFloat(7));
+               deal.setDescription(resultat.getString(8));
+
+            }
+            return deal;
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des deal "+ex.getMessage());
+            return null;
+        }
+    
+
     }
     
 }

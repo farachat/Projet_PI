@@ -4,29 +4,50 @@
  */
 package bestdeal.esprit.entities;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Fahmi
  */
+
 public class Fournisseur {
-    
     private int idFournisseur;
     private String nomFournisseur;
     private String mailFournisseur;
     private String telFournisseur;
     private String adresseFournisseur;
+    private Membre Membre;
+   
 
     public Fournisseur() {
     }
 
-    public Fournisseur(String nomFournisseur, String mailFournisseur, String telFournisseur, String adresseFournisseur) {
+    public Fournisseur(int idFournisseur, String nomFournisseur, String mailFournisseur, String telFournisseur, String adresseFournisseur, bestdeal.esprit.entities.Membre Membre) {
+        this.idFournisseur = idFournisseur;
         this.nomFournisseur = nomFournisseur;
         this.mailFournisseur = mailFournisseur;
         this.telFournisseur = telFournisseur;
         this.adresseFournisseur = adresseFournisseur;
+        this.Membre = Membre;
     }
+
+ 
+
 
     @Override
     public int hashCode() {
@@ -90,10 +111,19 @@ public class Fournisseur {
         this.adresseFournisseur = adresseFournisseur;
     }
 
-    @Override
-    public String toString() {
-        return "Fournisseur{" + "idFournisseur=" + idFournisseur + ", nomFournisseur=" + nomFournisseur + ", mailFournisseur=" + mailFournisseur + ", telFournisseur=" + telFournisseur + ", adresseFournisseur=" + adresseFournisseur + '}';
+    public bestdeal.esprit.entities.Membre getMembre() {
+        return Membre;
     }
 
+    public void setMembre(bestdeal.esprit.entities.Membre Membre) {
+        this.Membre = Membre;
+    }
+
+    @Override
+    public String toString() {
+        return "Fournisseur{" + "idFournisseur=" + idFournisseur + ", nomFournisseur=" + nomFournisseur + ", mailFournisseur=" + mailFournisseur + ", telFournisseur=" + telFournisseur + ", adresseFournisseur=" + adresseFournisseur + ", Membre=" + Membre + '}';
+    }
+
+   
     
 }

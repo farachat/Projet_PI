@@ -49,34 +49,38 @@ public class CommentaireDAO implements DAO<Commentaire>
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public List<Commentaire> DisplayAllCommentaires()
+    public List<Commentaire> DisplayAllCommentaires(int id)
     {
         List<Commentaire> listecommentaires = new ArrayList<Commentaire>();
 
-        String requete = "select * from commentaire";
+        String requete = "select * from commentaire where id_deal=?";
         try {
-           Statement statement = Connexion.getInstance().createStatement();
-            ResultSet resultat = statement.executeQuery(requete);
+           PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
+            ps.setInt(1, id);
+            ResultSet resultat = ps.executeQuery();
 
             while(resultat.next()){
                 Commentaire comm =new Commentaire();
                 Deal deal = new Deal();
                 Membre membre = new Membre();
                 DealDAO dealDao=new DealDAO();
-                deal=dealDao.findById(resultat.getInt(1));
+                deal=dealDao.findByIdd(resultat.getInt(2));
                 MembreDAO membreDao=new MembreDAO();
-                membre=membreDao.findById(resultat.getInt(1));
+                membre=membreDao.findById(resultat.getInt(3));
                 comm.setDeal(deal);
                 comm.setMembre(membre);
-                comm.setCommentaire(resultat.getString(3));
-                comm.setDateSys(resultat.getDate(4));
-                comm.setIdCommentaire(resultat.getInt(5));
+                System.out.println(deal);
+                comm.setCommentaire(resultat.getString(4));
+                comm.setDateSys(resultat.getDate(5));
+                comm.setIdCommentaire(resultat.getInt(1));
                 listecommentaires.add(comm);
+                System.out.println(resultat.getDate(5));
+                System.out.println(resultat.getString(4));
             }
             return listecommentaires;
         } catch (SQLException ex) {
            
-            System.out.println("erreur lors du chargement des depots "+ex.getMessage());
+            System.out.println("erreur lors du chargement des commentaires "+ex.getMessage());
             return null;
             
         }

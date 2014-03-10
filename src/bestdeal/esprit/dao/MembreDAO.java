@@ -124,28 +124,30 @@ public class MembreDAO implements DAO<Membre>{
 
     @Override
     public Membre findById(int id) {
+        Membre membre =new Membre();
         String requete = "select * from membre where id_membre=?";
         try {
             PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
             ps.setInt(1, id);
             ResultSet resultat = ps.executeQuery();
-            Membre membre =new Membre(); 
+           
         while(resultat.next())
-        { 
-            
+        {         
         
          
-        membre.setCinMembre(resultat.getInt(1));
-        membre.setLoginMembre(resultat.getString(2));
-        membre.setPwdMembre(resultat.getString(3));
-        membre.setNomMembre(resultat.getString(4));
-        membre.setPrenomMembre(resultat.getString(5));
-        membre.setDateNaissMembre(resultat.getDate(6));
-        membre.setMailMembre(resultat.getString(7));
-        membre.setTelMembre(resultat.getString(8));
-        membre.setAdressMembre(resultat.getString(9));
-        membre.setType(resultat.getString(10));
-        membre.setPseudo(resultat.getString(11));
+            
+        membre.setIdMembre(resultat.getInt(1));
+        membre.setCinMembre(resultat.getInt(2));
+        membre.setLoginMembre(resultat.getString(3));
+        membre.setPwdMembre(resultat.getString(4));
+        membre.setNomMembre(resultat.getString(5));
+        membre.setPrenomMembre(resultat.getString(6));
+        membre.setDateNaissMembre(resultat.getDate(7));
+        membre.setMailMembre(resultat.getString(8));
+        membre.setTelMembre(resultat.getString(9));
+        membre.setAdressMembre(resultat.getString(10));
+        membre.setType(resultat.getString(11));
+  
         
         }
         
@@ -158,6 +160,26 @@ public class MembreDAO implements DAO<Membre>{
         } 
     }
     
+    public Membre findByIdd(String id) {
+        String requete = "select id_membre from membre where login_membre=?";
+        try {
+            PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
+            ps.setString(1, id);
+            ResultSet resultat = ps.executeQuery();
+            Membre membre =new Membre(); 
+        while(resultat.next())
+        {      
+         membre.setIdMembre(resultat.getInt(1));        
+        }
+        
+        return membre;
+        
+        } 
+        catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex); 
+        System.out.println("erreur lors du chargement des membres "+ex.getMessage()); return null; 
+        } 
+    }
     
     public Membre findByPseudo(String pseudo) {
         String requete = "select * from membre where pseudo=?";
@@ -169,6 +191,26 @@ public class MembreDAO implements DAO<Membre>{
         while(resultat.next())
         {                    
         membre.setPseudo(resultat.getString(12));
+        }
+        return membre;
+        
+        } 
+        catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex); 
+        System.out.println("erreur lors du chargement des membres "+ex.getMessage()); return null; 
+        } 
+    }
+    
+    public Membre findByNomType(String pseudo) {
+        String requete = "select type from membre where login_membre=?";
+        try {
+            PreparedStatement ps = MyConnexion.getInstance().prepareStatement(requete);
+            ps.setString(1, pseudo);
+            ResultSet resultat = ps.executeQuery();
+            Membre membre =new Membre(); 
+        while(resultat.next())
+        {                    
+        membre.setType(resultat.getString(1));
         }
         return membre;
         

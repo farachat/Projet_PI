@@ -33,7 +33,6 @@ public class AuthentifAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
@@ -45,7 +44,6 @@ public class AuthentifAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Best Deal - Authentification Administrateur");
-        setPreferredSize(new java.awt.Dimension(370, 300));
         setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(jTextFieldLogin);
@@ -67,16 +65,6 @@ public class AuthentifAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1);
         jButton1.setBounds(130, 220, 130, 25);
-
-        jLabel3.setText("Mot de passe oublié ?");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(230, 270, 140, 16);
 
         jLabel5.setText("Vous avez un compte ? Connectez-vous");
         getContentPane().add(jLabel5);
@@ -175,12 +163,6 @@ public class AuthentifAdmin extends javax.swing.JFrame {
         ap.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        this.setVisible(false);
-        RecuperationMP rec =new RecuperationMP();
-                rec.setVisible(true);
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
@@ -223,7 +205,6 @@ public class AuthentifAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;

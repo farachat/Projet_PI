@@ -8,7 +8,6 @@ import bestdeal.esprit.dao.AdministrateurDAO;
 import bestdeal.esprit.dao.MembreDAO;
 import bestdeal.esprit.entities.Membre;
 import bestdeal.esprit.facebook.ConnexionFacebook;
-
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -20,7 +19,16 @@ import javax.swing.JOptionPane;
  * @author Fahmi
  */
 public class AuthentificationMembre extends javax.swing.JFrame {
- private static String nomloginmembre;
+ 
+    private static int idmembreint;
+     private static String  nomloginmembre;
+    public static int getIdmembreint() {
+        return idmembreint;
+    }
+
+    public static void setIdmembreint(int idmembreint) {
+        AuthentificationMembre.idmembreint = idmembreint;
+    }
 
     public static String getNomloginmembre() {
         return nomloginmembre;
@@ -49,14 +57,13 @@ public class AuthentificationMembre extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -64,60 +71,68 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setBorder(null);
+        jTextField1.setOpaque(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 148, 50));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 180, 30));
 
-        jButton2.setText("Connecter");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/seconnecter_2.gif"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 150, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 280, 60));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 240));
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, -1, -1));
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/fb icon.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/ffff_2.gif"))); // NOI18N
         jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 160, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 310, 60));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 240));
-        jLabel4.setText("s'inscrire");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 570, 90, 30));
 
-        jLabel5.setText("Vous avez un compte ? Connectez-vous");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
+        jLabel5.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 180, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/login.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPasswordField1.setBorder(null);
+        jPasswordField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPasswordField1.setOpaque(false);
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 190, 20));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/motpasse.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 150, 50));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/User-Accounts_1.gif"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 50, 50));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/bkg-1.jpg"))); // NOI18N
-        jLabel6.setText("jLabel4");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/go-locker_1.gif"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 50, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bestdeal/esprit/image/abstract_color_background_picture_8016-wide.gif"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 650));
 
         jMenu1.setText("Fichier");
 
@@ -146,7 +161,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-607)/2, (screenSize.height-480)/2, 607, 480);
+        setBounds((screenSize.width-1042)/2, (screenSize.height-696)/2, 1042, 696);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -154,7 +169,10 @@ public class AuthentificationMembre extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          MembreDAO membre = new MembreDAO(); 
+         
+        
+        
+        MembreDAO membre = new MembreDAO(); 
           boolean trouve = false;
           /*
           for(Membre m:membre.findAll()){
@@ -179,17 +197,44 @@ public class AuthentificationMembre extends javax.swing.JFrame {
            if(membre.findAll().get(i).getLoginMembre().equals(jTextField1.getText()) && membre.findAll().get(i).getPwdMembre().equals(jPasswordField1.getText())) { 
                
                trouve = true;
+               Membre mid=new Membre();
+             
+                      
+                  
+              
+              
         } else
            { 
               trouve = false;
            } }
        if(trouve == true){
-          
+                    
                JOptionPane.showMessageDialog(this, "Bienvenue "+jTextField1.getText());
                 setNomloginmembre(jTextField1.getText());  
-               InterfaceMembre m=new InterfaceMembre();
+                Membre m = membre.findByNomType(jTextField1.getText().toString());
+                idmembreint=membre.findByIdd(nomloginmembre).getIdMembre();
+                 System.out.println("id : "+idmembreint);
+                System.out.println("type : "+m.getType());
+                
+                if(m.getType().equals( "Membre"))
+                {
+               InterfaceMembre me=new InterfaceMembre();
                this.setVisible(false);
-               m.setVisible(true);
+               me.setVisible(true);
+                }
+                else {
+                    
+                    if(m.getType().equals( "Vendeur"))
+                   
+                {
+                    InterfaceVendeur mv=new InterfaceVendeur();
+               this.setVisible(false);
+               mv.setVisible(true);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Vous n'etes pas un membre "+jTextField1.getText());
+                }}
        }
        else{
            JOptionPane.showMessageDialog(this, "login ou mot de passe invalide !!!!!");
@@ -224,6 +269,12 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         Apropos ap=new Apropos();
         ap.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        this.setVisible(false);
+        RecuperationMP rec =new RecuperationMP();
+        rec.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -271,7 +322,6 @@ public class AuthentificationMembre extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

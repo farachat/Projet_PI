@@ -4,21 +4,67 @@
  */
 package bestdeal.esprit.entities;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Fahmi
  */
-public class Deal {
-    private int idDeal;
+
+public class Deal implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_deal")
+    private Integer idDeal;
+    @Basic(optional = false)
+    @Column(name = "nom_deal")
     private String nomDeal;
+    @Column(name = "date_debut_deal")
+    @Temporal(TemporalType.DATE)
     private Date dateDebutDeal;
+    @Column(name = "date_fin_deal")
+    @Temporal(TemporalType.DATE)
     private Date dateFinDeal;
+    @Column(name = "categorie")
     private String categorie;
+    @Column(name = "ville")
     private String ville;
-    private float prix;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "prix")
+    private Float prix;
+    @Lob
+    @Column(name = "description")
     private String description;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "image")
+    private String image;
+    @Column(name = "pourcentage")
+    private Integer pourcentage;
+    @Column(name = "details")
+    private String details;
+    @JoinColumn(name = "id_fournisseur", referencedColumnName = "id_fournisseur")
+    @ManyToOne
+    private Fournisseur idFournisseur;
+   
 
     public String getImage() {
         return image;
@@ -27,7 +73,7 @@ public class Deal {
     public void setImage(String image) {
         this.image = image;
     }
-    private String image;
+  
 
     public Deal() {
     }
@@ -133,6 +179,59 @@ public class Deal {
     public String toString() {
         return "Deal{" + "idDeal=" + idDeal + ", nomDeal=" + nomDeal + ", dateDebutDeal=" + dateDebutDeal + ", dateFinDeal=" + dateFinDeal + ", categorie=" + categorie + ", ville=" + ville + ", prix=" + prix + ", description=" + description + '}';
     }
+
+    public Deal(Integer idDeal) {
+        this.idDeal = idDeal;
+    }
+
+    public Deal(Integer idDeal, String nomDeal, String image) {
+        this.idDeal = idDeal;
+        this.nomDeal = nomDeal;
+        this.image = image;
+    }
+
+    
+
+    public void setIdDeal(Integer idDeal) {
+        this.idDeal = idDeal;
+    }
+
+    
+
+    public void setPrix(Float prix) {
+        this.prix = prix;
+    }
+
+   
+
+    public Integer getPourcentage() {
+        return pourcentage;
+    }
+
+    public void setPourcentage(Integer pourcentage) {
+        this.pourcentage = pourcentage;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public Fournisseur getIdFournisseur() {
+        return idFournisseur;
+    }
+
+    public void setIdFournisseur(Fournisseur idFournisseur) {
+        this.idFournisseur = idFournisseur;
+    }
+
+    
+    
+
+   
 
     
     

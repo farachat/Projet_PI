@@ -26,12 +26,15 @@ public class Commentaire {
     private String commentaire;
     private Date dateSys;
 
-    public Commentaire(Deal deal, Membre membre, String commentaire, Date dateSys) {
+    public Commentaire(int IdCommentaire, Deal deal, Membre membre, String commentaire, Date dateSys) {
+        this.IdCommentaire = IdCommentaire;
         this.deal = deal;
         this.membre = membre;
         this.commentaire = commentaire;
         this.dateSys = dateSys;
     }
+
+    
 
     public Commentaire() {
     }
